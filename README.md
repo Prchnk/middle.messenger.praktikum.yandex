@@ -11,3 +11,4 @@ npm run start
 
 ### ссылка на задеплоеное приложение Netlify
 https://earnest-travesseiro-3d5bf1.netlify.app
+
