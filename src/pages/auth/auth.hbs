@@ -1,0 +1,17 @@
+<h2>{{title}}</h2>
+
+<form>
+
+	{{#each list}}
+
+		<div class="input-control shadow-input">
+			<label class="input-label">{{label}}
+				<input name="{{this.name}}" type="{{this.type}}">
+			</label>
+		</div>
+
+	{{/each}}
+
+</form>
+
+<button class="btn_submit">авторизоваться</button>

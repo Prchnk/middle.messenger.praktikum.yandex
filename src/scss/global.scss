@@ -1,3 +1,7 @@
+:root {
+	--main-bg-color: #1a394f;
+}
+
 *,
 :before,
 :after {
@@ -19,7 +23,6 @@ img {
 	max-height: 100%;
 }
 
-#app,
 .container,
 html,
 body {
@@ -36,7 +39,7 @@ body {
 .auth {
 	height: 50%;
 	width: 25%;
-	border: #1a394f;
+	border: var(--main-bg-color);
 	border-radius: 12px;
 	padding: 30px
 }
@@ -44,7 +47,7 @@ body {
 .registration {
 	height: auto;
 	width: 25%;
-	border: #1a394f;
+	border: var(--main-bg-color);
 	border-radius: 12px;
 	padding: 30px;
 }
@@ -53,7 +56,7 @@ h2 {
 	text-align: center;
 	margin-top: 50px;
 	margin-bottom: 50px;
-	color: #1a394f;
+	color: var(--main-bg-color);
 }
 
 .input-control {
@@ -63,20 +66,20 @@ h2 {
 .input-control input {
 	width: 100%;
 	border: 0;
-	border-bottom: 1px solid #1a394f;
+	border-bottom: 1px solid var(--main-bg-color);
 	font-size: 20px;
 	line-height: 26px
 }
 
 .input-label {
-	color: #1a394f;
+	color: var(--main-bg-color);
 	font-size: 12px
 }
 
-.submit {
+.btn_submit {
 	width: 100%;
 	color: #fff;
-	background-color: #1a394f;
+	background-color: var(--main-bg-color);
 	border: 0;
 	border-radius: 12px;
 	font-size: 24px;
@@ -99,7 +102,7 @@ h2 {
 .avatar {
 	width: 120px;
 	height: 120px;
-	border: 5px solid #1a394f;
+	border: 5px solid var(--main-bg-color);
 	border-radius: 50%;
 }
 
@@ -115,7 +118,7 @@ h2 {
 	height: auto;
 	max-width: 350px;
 	width: 100%;
-	border: #1a394f;
+	border: var(--main-bg-color);
 	border-radius: 12px;
 	padding: 30px;
 	display: flex;
@@ -130,11 +133,16 @@ h2 {
 .form-profile {
 	padding: 10px;
 	width: 100%;
-	background-color: #1a394f;
+	background-color: var(--main-bg-color);
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
+	gap: 2em;
 	color: white;
+	margin-bottom: 2em;
+}
+
+.form-profile__item {
+	padding: 0.5em 0;
 }
 
 .form-profile__item-info,
@@ -155,6 +163,7 @@ h2 {
 .form-profile__item_active .form-profile__item-info {
 	display: none;
 }
+
 
 
 // .form-profile
