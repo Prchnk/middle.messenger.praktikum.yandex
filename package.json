@@ -1,9 +1,11 @@
 {
   "name": "viber2.0",
   "version": "1.0.0",
+	"source": "src/pages/index.html",
   "scripts": {
-    "build": "parcel build src/pages/index.html",
-    "start": "npm run build && node ./src/server/app.js",
+		"start": "parcel --no-cache",
+		"build": "parcel build --no-cache",
+    "start-node": "npm run build && node ./src/server/app.js",
     "dev": "npm run build && nodemon ./src/server/app.js",
     "profile": "parcel build src/pages/profile/profile.html"
   },
