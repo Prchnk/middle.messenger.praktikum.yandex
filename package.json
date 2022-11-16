@@ -3,9 +3,9 @@
   "version": "1.0.0",
 	"source": "src/pages/index.html",
   "scripts": {
-		"start": "parcel --no-cache",
+		"start-parcel": "parcel --no-cache",
 		"build": "parcel build --no-cache",
-    "start-node": "npm run build && node ./src/server/app.js",
+    "start": "npm run build && node ./src/server/app.js",
     "dev": "npm run build && nodemon ./src/server/app.js",
     "profile": "parcel build src/pages/profile/profile.html"
   },
