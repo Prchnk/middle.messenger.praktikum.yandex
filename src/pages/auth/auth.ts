@@ -10,7 +10,7 @@ function renderHbs() {
 			{name: 'password', label: 'Логин', type: 'password'},
 		],
 	};
-	DOCUMENT.querySelector('#output').innerHTML = AuthTemplate(data);
+	DOCUMENT.querySelector('#output')!.innerHTML = AuthTemplate(data);
 }
 
 renderHbs()

@@ -14,7 +14,7 @@ function renderHbs() {
 
 		]
 	};
-	document.querySelector('#output').innerHTML = RegistrationTemplate(data);
+	document.querySelector('#output')!.innerHTML = RegistrationTemplate(data);
 }
 
 renderHbs();

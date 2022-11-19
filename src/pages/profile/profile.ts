@@ -1,4 +1,6 @@
 import ProfileTemplate from './profile.hbs';
+import {getTargetElement} from "../../helpers";
+import {ProfileItemChildNodes} from "./types";
 
 function renderHbs() {
 	const data = {
@@ -13,10 +15,12 @@ function renderHbs() {
 			{name: 'email'},
 		]
 	};
-	document.querySelector('#output').innerHTML = ProfileTemplate(data);
+	document.querySelector('#output')!.innerHTML = ProfileTemplate(data);
 }
 
 class LogicProfileForm {
+	profileItemNodes: Element[];
+	profileItemObjects: Array<ProfileItemChildNodes>
 	constructor() {
 		this.onInit();
 	}
@@ -39,46 +43,46 @@ class LogicProfileForm {
 		}
 	}
 
-	infoTextHandlerDblClick = (event) => {
-		const targetNode = event.target;
-		const formItemNode = targetNode.closest('[data-type=form-profile-item]');
+	infoTextHandlerDblClick = (event: MouseEvent) => {
+		const targetNode = getTargetElement(event);
+		const formItemNode: HTMLElement = targetNode!.closest('[data-type=form-profile-item]')!;
 		const profileItemObj = this.getProfileItemChildNodes(formItemNode);
-		const formItemValue = formItemNode.getAttribute('data-value');
+		const formItemValue = formItemNode!.getAttribute('data-value')!;
 
-		formItemNode.classList.add('form-profile__item_active');
+		formItemNode!.classList.add('form-profile__item_active');
 		profileItemObj.formItemInputNode.value = formItemValue;
 	};
 
-	saveBtnHandlerCLick = (event) => {
-		const targetNode = event.target;
-		const formItemNode = targetNode.closest('[data-type=form-profile-item]');
+	saveBtnHandlerCLick = (event: MouseEvent) => {
+		const targetNode = getTargetElement(event);
+		const formItemNode: HTMLElement = targetNode.closest('[data-type=form-profile-item]')!;
 		const profileItemObj = this.getProfileItemChildNodes(formItemNode);
 		const currentInputValue = profileItemObj.formItemInputNode.value;
 
-		formItemNode.setAttribute('data-value', currentInputValue);
+		formItemNode!.setAttribute('data-value', currentInputValue);
 		profileItemObj.formItemInfoTextNode.innerText = currentInputValue;
-		formItemNode.classList.remove('form-profile__item_active');
+		formItemNode!.classList.remove('form-profile__item_active');
 	};
 
-	editBtnHandlerCLick = (event) => {
-		const targetNode = event.target;
-		const formItemNode = targetNode.closest('[data-type=form-profile-item]');
+	editBtnHandlerCLick = (event: MouseEvent) => {
+		const targetNode = getTargetElement(event);
+		const formItemNode: HTMLElement = targetNode.closest('[data-type=form-profile-item]')!;
 		const profileItemObj = this.getProfileItemChildNodes(formItemNode);
-		const formItemValue = formItemNode.getAttribute('data-value');
+		const formItemValue = formItemNode.getAttribute('data-value')!;
 
 		formItemNode.classList.add('form-profile__item_active');
 		profileItemObj.formItemInputNode.value = formItemValue;
 	};
 
-	getProfileItemChildNodes(formItemNode) {
+	getProfileItemChildNodes(formItemNode: HTMLElement): ProfileItemChildNodes {
 		return {
 			formItemNode: formItemNode,
-			formItemInfoNode: formItemNode.querySelector('[data-type=form-profile-item-info]'),
-			formItemInfoTextNode: formItemNode.querySelector('[data-type=form-profile-item-info-text]'),
-			formItemInputWrapperNode: formItemNode.querySelector('[data-type=form-profile-input-wrapper]'),
-			formItemInputNode: formItemNode.querySelector('[data-type=form-profile-input]'),
-			formItemSaveBtnNode: formItemNode.querySelector('[data-type=form-profile-save-btn]'),
-			formItemEditBtnNode: formItemNode.querySelector('[data-type=form-profile-edit-btn]')
+			formItemInfoNode: formItemNode.querySelector('[data-type=form-profile-item-info]')!,
+			formItemInfoTextNode: formItemNode.querySelector('[data-type=form-profile-item-info-text]')!,
+			formItemInputWrapperNode: formItemNode.querySelector('[data-type=form-profile-input-wrapper]')!,
+			formItemInputNode: formItemNode.querySelector('[data-type=form-profile-input]')!,
+			formItemSaveBtnNode: formItemNode.querySelector('[data-type=form-profile-save-btn]')!,
+			formItemEditBtnNode: formItemNode.querySelector('[data-type=form-profile-edit-btn]')!
 		};
 	}
 
@@ -98,4 +102,4 @@ class LogicProfileForm {
 
 
 renderHbs();
-const logicProfileForm = new LogicProfileForm();
+new LogicProfileForm();
