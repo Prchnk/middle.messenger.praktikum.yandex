@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"lib": [
+			"ES2016",
+			"DOM"
+		],
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"sourceMap": true,
+		"strictNullChecks": true,
+		"types": [
+			"src/global.d.ts"
+		]
+	}
+}

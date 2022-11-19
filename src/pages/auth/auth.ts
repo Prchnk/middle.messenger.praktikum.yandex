@@ -1,4 +1,5 @@
 import AuthTemplate from './auth.hbs';
+import {DOCUMENT} from "../../helpers";
 
 
 function renderHbs() {
@@ -9,7 +10,7 @@ function renderHbs() {
 			{name: 'password', label: 'Логин', type: 'password'},
 		],
 	};
-	document.querySelector('#output').innerHTML = AuthTemplate(data);
+	DOCUMENT.querySelector('#output').innerHTML = AuthTemplate(data);
 }
 
 renderHbs()
