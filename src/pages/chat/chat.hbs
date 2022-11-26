@@ -1,0 +1,66 @@
+<div class="container">
+<div class="chat-list">
+	<div class="search">
+		<label>
+			<input type="text" placeholder="поиск">
+		</label>
+	</div>
+
+{{#each list}}
+		<ul>
+			<li>
+				<img src="" alt="avatar"/>
+				<div class="about">
+					<div class="name">{{this.name}}</div>
+					<div class="status">
+						{{status}}
+					</div>
+				</div>
+			</li>
+		</ul>
+
+
+	</div>
+		<div class="chat">
+			<div class="header">
+				<img src="" alt="avatar">
+				<div class="chat-about">
+					<div class="chat-with">Чат с {{this.name}}</div>
+					<div class="amount-messages"> {{amount_message}} сообщений</div>
+				</div>
+			</div>
+
+			<div class="body">
+				<ul>
+					<li class="special-fix">
+						<div class="message-data align-right">
+							<span class="message-data-time" >{{date}}</span>
+							<span class="message-data-name" >{{me}}</span>
+
+						</div>
+						<div class="message your-message float-right">
+							Как вообще работает история чата? здесь будет результат инпута?
+						</div>
+					</li>
+
+					<li>
+						<div class="message-data">
+							<span class="message-data-name"> {{this.name}}</span>
+							<span class="message-data-time">{{date}}</span>
+						</div>
+						<div class="message my-message">
+							а сюда соответственно то, что мне придет с даты сервака?
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="footer">
+				<input name="message" type="text" class="input-message">
+				<button class="send-button">отправить</button>
+			</div>
+
+		</div>
+	</div>
+
+{{/each}}

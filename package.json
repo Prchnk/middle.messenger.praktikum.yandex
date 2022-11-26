@@ -1,19 +1,23 @@
 {
   "name": "viber2.0",
   "version": "1.0.0",
-	"source": "src/pages/index.html",
+  "source": "src/pages/index.html",
   "scripts": {
-		"start-parcel": "parcel --no-cache",
-		"build": "parcel build --no-cache",
+    "start-parcel": "parcel --no-cache",
+    "build": "parcel build --no-cache",
     "start": "npm run build && node ./src/server/app.js",
     "dev": "npm run build && nodemon ./src/server/app.js",
-    "profile": "parcel build src/pages/profile/profile.html"
+    "profile": "parcel build src/pages/profile/profile.html",
+		"lint": "eslint"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint": "^8.28.0",
     "nodemon": "^2.0.20",
     "parcel": "^2.8.0",
     "parcel-transformer-hbs": "^1.0.4"
@@ -23,14 +27,14 @@
     "express-handlebars": "6.0.6",
     "handlebars": "4.7.7"
   },
-	"engines": {
-		"node": ">= 12"
-	},
-	"targets": {
-		"default": {
-			"engines": {
-				"browsers": ">= 50%"
-			}
-		}
-	}
+  "engines": {
+    "node": ">= 12"
+  },
+  "targets": {
+    "default": {
+      "engines": {
+        "browsers": ">= 50%"
+      }
+    }
+  }
 }

@@ -1,4 +1,6 @@
 import RegistrationTemplate from './registration.hbs';
+import {render} from '../../block/render';
+import {InputRegistration} from "./input";
 
 function renderHbs() {
 	const data = {
@@ -15,6 +17,10 @@ function renderHbs() {
 		]
 	};
 	document.querySelector('#output')!.innerHTML = RegistrationTemplate(data);
+	data.list.forEach((props) => {
+		render('form', new InputRegistration(props))
+	})
 }
 
 renderHbs();
+

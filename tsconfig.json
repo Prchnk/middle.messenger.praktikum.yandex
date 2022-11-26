@@ -5,12 +5,12 @@
 			"DOM"
 		],
 		"noImplicitAny": true,
-		"noUnusedLocals": true,
+		"noUnusedLocals": false,
 		"noUnusedParameters": true,
 		"sourceMap": true,
 		"strictNullChecks": true,
 		"types": [
-			"src/global.d.ts"
+			"/src/global.d.ts"
 		]
 	}
 }

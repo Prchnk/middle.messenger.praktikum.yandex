@@ -37,11 +37,12 @@ body {
 }
 
 .auth {
-	height: 50%;
-	width: 25%;
+	max-width: 400px;
+	width: 100%;
 	border: var(--main-bg-color);
 	border-radius: 12px;
-	padding: 30px
+	padding: 30px;
+	background-color: white;
 }
 
 .registration {
@@ -73,7 +74,7 @@ h2 {
 
 .input-label {
 	color: var(--main-bg-color);
-	font-size: 12px
+	font-size: 1em;
 }
 
 .btn_submit {
@@ -99,13 +100,6 @@ h2 {
 	justify-content: center;
 }
 
-.avatar {
-	width: 120px;
-	height: 120px;
-	border: 5px solid var(--main-bg-color);
-	border-radius: 50%;
-}
-
 .main {
 	font-size: 35px;
 }
@@ -114,60 +108,15 @@ h2 {
 	display: none;
 }
 
-.profile {
-	height: auto;
-	max-width: 350px;
-	width: 100%;
-	border: var(--main-bg-color);
-	border-radius: 12px;
-	padding: 30px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 60px;
-	background-color: white;
+
+.input-error {
+	display: grid;
+	//display: flex;
+	//flex-direction: column;
+	gap: 10px;
 }
 
-// .form-profile
-
-.form-profile {
-	padding: 10px;
-	width: 100%;
-	background-color: var(--main-bg-color);
-	display: flex;
-	flex-direction: column;
-	gap: 2em;
-	color: white;
-	margin-bottom: 2em;
+.input-error_active {
+	color: red;
+	border: 1px solid red;
 }
-
-.form-profile__item {
-	padding: 0.5em 0;
-}
-
-.form-profile__item-info,
-.form-profile__input-wrapper {
-	display: flex;
-	justify-content: space-between;
-	gap: 20px;
-}
-
-.form-profile__input-wrapper {
-	display: none;
-}
-
-.form-profile__item_active .form-profile__input-wrapper {
-	display: flex;
-}
-
-.form-profile__item_active .form-profile__item-info {
-	display: none;
-}
-
-
-
-// .form-profile
-
-// [data-type=form-item] {
-
-// }

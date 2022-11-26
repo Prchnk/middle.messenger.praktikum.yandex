@@ -1,0 +1,193 @@
+:root {
+	--main-bg-color: #1a394f;
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+
+body, html, #output, .container {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+
+body {
+	background-image: url("../../img/background.jpg");
+	padding: 40px 0;
+	color: white;
+}
+
+.container {
+	margin: 0 auto;
+	width: 750px;
+	background: #444753;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+}
+
+
+.chat {
+	background-color: var(--main-bg-color);
+	flex-grow: 1;
+	border-left: 1px solid gray;
+	display: flex;
+	flex-flow: column;
+}
+
+.chat-about {
+	float: left;
+	padding-left: 10px;
+	margin-top: 6px;
+}
+
+.chat-with {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.amount-messages {
+	color: gray;
+}
+
+.chat-list {
+	width: 260px;
+	float: left;
+
+	.search {
+		padding: 20px;
+	}
+
+	input {
+		border-radius: 3px;
+		border: none;
+		padding: 14px;
+		color: white;
+		background: #6A6C75;
+		width: 90%;
+		font-size: 14px;
+	}
+
+	ul {
+		padding: 20px;
+
+
+		li {
+			padding-bottom: 20px;
+		}
+	}
+
+	.about {
+		float: left;
+		margin-top: 8px;
+		padding-left: 8px;
+	}
+
+	.status {
+		color: gray;
+	}
+
+}
+
+
+.header {
+	height: 60px;
+	background-color: var(--main-bg-color);
+}
+
+.footer {
+	height: 60px;
+	display: flex;
+}
+
+.body {
+	flex-grow: 1;
+	background-color: white;
+	overflow: auto;
+
+}
+
+
+.send-button {
+	width: 70px;
+}
+
+.input-message {
+	flex-grow: 1;
+}
+
+img {
+	float: left;
+}
+
+.message-data {
+	margin-bottom: 15px;
+	color: black;
+}
+
+.message-data-time {
+	color: lighten(gray, 8%);
+	padding-left: 6px;
+}
+
+.message {
+	color: white;
+	padding: 18px 20px;
+	line-height: 26px;
+	font-size: 16px;
+	border-radius: 7px;
+	margin-bottom: 30px;
+	width: 90%;
+	position: relative;
+
+	&::after {
+		bottom: 100%;
+		left: 7%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-bottom-color: var(--main-bg-color);
+		margin-left: -10px;
+	}
+}
+
+.my-message {
+	background: var(--main-bg-color);
+}
+
+.your-message {
+	background: #1F0320;
+
+	&::after {
+		border-bottom-color: #1F0320;
+		left: 93%;
+	}
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.float-right {
+	float: right;
+}
+
+.special-fix::after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: "";
+	clear: both;
+	height: 0;
+}

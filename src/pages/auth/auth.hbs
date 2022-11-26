@@ -5,9 +5,9 @@
 	{{#each list}}
 
 		<div class="input-control shadow-input">
-			<label class="input-label">{{label}}
-				<input name="{{this.name}}" type="{{this.type}}">
-			</label>
+				<label for="{{this.name}}" class="input-label-text">{{this.label}}</label>
+				<input class="input" name="{{this.name}}" id="{{this.name}}" type="{{this.type}}">
+				<span class="input-error"></span>
 		</div>
 
 	{{/each}}
