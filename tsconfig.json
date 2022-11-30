@@ -1,11 +1,12 @@
 {
 	"compilerOptions": {
+		"target": "ES5",
 		"lib": [
-			"ES2016",
+			"ES2017",
 			"DOM"
 		],
 		"noImplicitAny": true,
-		"noUnusedLocals": false,
+		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"sourceMap": true,
 		"strictNullChecks": true,

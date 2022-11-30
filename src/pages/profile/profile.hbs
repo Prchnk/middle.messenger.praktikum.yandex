@@ -5,18 +5,22 @@
 	{{#each list}}
 		<div class="form-profile__item" data-type="form-profile-item" data-input-name="{{ this.name }}"
 				 data-value="{{ this.name }}">
+
 			<div class="form-profile__item-info" data-type="form-profile-item-info">
 				<div class="form-profile__item-info-text" data-type="form-profile-item-info-text">{{ this.name }}</div>
 				<button type="button" class="btn form-profile__edit-btn" data-type="form-profile-edit-btn">Edit</button>
 			</div>
 
 			<div class="form-profile__input-wrapper shadow-input" data-type="form-profile-input-wrapper">
-				<input type="text" name="{{ this.name }}" class="form-profile__input" data-type="form-profile-input">
+				<div class="injectInputComponent"></div>
+				{{!-- <input type="text" name="{{ this.name }}" class="form-profile__input" data-type="form-profile-input"> --}}
 				<button type="button" class="form-profile__save-btn btn" data-type="form-profile-save-btn">Save</button>
 			</div>
+
 		</div>
 
 	{{/each}}
+
 </form>
 
 <button type="button" class="btn btn_submit">Сохранить</button>

@@ -5,6 +5,7 @@
   "scripts": {
     "start-parcel": "parcel --no-cache",
     "build": "parcel build --no-cache",
+		"build-cache": "parcel build",
     "start": "npm run build && node ./src/server/app.js",
     "dev": "npm run build && nodemon ./src/server/app.js",
     "profile": "parcel build src/pages/profile/profile.html",

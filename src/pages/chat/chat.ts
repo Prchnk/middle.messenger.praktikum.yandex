@@ -1,5 +1,5 @@
 import ChatTemplate from './chat.hbs';
-import {DOCUMENT} from "../../helpers";
+import {DOCUMENT} from "../../helpers/helpers";
 
 function renderHbs() {
 	const data = {

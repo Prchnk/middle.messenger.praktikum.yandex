@@ -12,7 +12,6 @@ export class InputRegistration  extends  Block {
 // @ts-ignore
 // 		return Template(this.props);
 		let resalt = Template(this.props);
-		console.log(resalt, 'input registration');
 		return resalt;
 	}
 }

@@ -22,6 +22,7 @@ class Block<P extends Record<string, unknown> = any> {
 
 	protected props: Props<P>;
 	public children: Record<string, Block>;
+	public id: number = Date.now() + Math.floor(Math.random() * 1000);
 	private eventBus: () => EventBus<BlockEvents<Props<P>>>;
 	private _element: HTMLElement | null = null;
 	private _meta: { tagName: string; props: any; };
@@ -116,7 +117,8 @@ class Block<P extends Record<string, unknown> = any> {
 		}
 	}
 
-	protected componentDidUpdate(oldProps: Props<P>, newProps: Props<P>) {
+	protected componentDidUpdate(oldProps: Props<P>, newProps: Props<P>): boolean;
+	protected componentDidUpdate() {
 		return true;
 	}
 
@@ -129,7 +131,7 @@ class Block<P extends Record<string, unknown> = any> {
 	};
 
 	get element() {
-		return this._element;
+		return this._element!;
 	}
 
 	_render() {
