@@ -5,6 +5,8 @@ export function getTargetElement(event: Event): HTMLElement {
 }
 
 export function querySelector(selectors: string, parentNode: Element | null = null) {
+	console.log(1);
+
 	let nodeOrNull = null;
 
 	if (parentNode === null) {
