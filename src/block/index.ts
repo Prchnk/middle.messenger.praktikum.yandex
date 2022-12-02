@@ -1,6 +1,4 @@
-/* tslint:disable */
-
-import { EventBus } from './event_bus';
+import { EventBus } from '../utils/eventBus';
 
 type BlockEvents<P = any> = {
 	init: [];
@@ -27,12 +25,6 @@ class Block<P extends Record<string, unknown> = any> {
 	private _element: HTMLElement | null = null;
 	private _meta: { tagName: string; props: any; };
 
-	/** JSDoc
-	 * @param {string} tagName
-	 * @param {Object} props
-	 *
-	 * @returns {void}
-	 */
 	protected constructor(tagName = 'div', propsWithChildren: Props<P> = {} as Props<P>) {
 		const eventBus = new EventBus<BlockEvents<Props<P>>>();
 

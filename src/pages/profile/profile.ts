@@ -2,8 +2,8 @@ import ProfileTemplate from './profile.hbs';
 import {querySelector} from "../../helpers/helpers";
 import {render} from "../../block/render";
 import {InputRegistration} from "../../components/input/input";
-import {ValidatorForm} from "../../classes/ValidatorForm";
-import { LogicProfileForm } from '../../classes/LogicProfileForm';
+import {ValidatorForm} from "../../helpers/classes/ValidatorForm";
+import { LogicProfileForm } from '../../helpers/classes/LogicProfileForm';
 
 function renderHbs() {
 	const data = {

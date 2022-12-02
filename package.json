@@ -5,11 +5,11 @@
   "scripts": {
     "start-parcel": "parcel --no-cache",
     "build": "parcel build --no-cache",
-		"build-cache": "parcel build",
+    "build-cache": "parcel build",
     "start": "npm run build && node ./src/server/app.js",
-    "dev": "npm run build && nodemon ./src/server/app.js",
+    "dev": "npm run build-cache && nodemon ./src/server/app.js",
     "profile": "parcel build src/pages/profile/profile.html",
-		"lint": "eslint"
+    "lint": "eslint"
   },
   "author": "",
   "license": "ISC",
@@ -19,9 +19,11 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "eslint": "^8.28.0",
+    "eslint-config-airbnb": "^19.0.4",
     "nodemon": "^2.0.20",
     "parcel": "^2.8.0",
-    "parcel-transformer-hbs": "^1.0.4"
+    "parcel-transformer-hbs": "^1.0.4",
+    "stylelint": "^14.15.0"
   },
   "dependencies": {
     "express": "4.18.2",

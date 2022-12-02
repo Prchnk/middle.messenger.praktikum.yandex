@@ -1,6 +1,6 @@
 import Block from './index';
 
-export function render(query: string | Element, block: Block) {
+export function render(query: string | Element, block: Block, type: 'append' | 'prepend' = 'append') {
 	let root: Element | null = null;
 
 	if (typeof query === 'string') {
@@ -16,7 +16,12 @@ export function render(query: string | Element, block: Block) {
 	}
 
 	// Можно завязаться на реализации вашего класса Block
-	root.appendChild(block.getContent());
+	if (type === 'append') {
+		root.append(block.getContent());
+	} else if (type === 'prepend') {
+		root.prepend(block.getContent());
+	}
+
 	block.dispatchComponentDidMount();
 
 	return root;

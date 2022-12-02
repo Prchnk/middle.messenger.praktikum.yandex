@@ -1,3 +1,4 @@
+import { querySelector } from "../helpers";
 import {InputObjNodes} from "../interfaces/interfaces";
 import {ValidatorInput} from "./ValidatorInput";
 
@@ -9,13 +10,55 @@ export class ValidatorForm {
 
 	private inputObjNodesArr: InputObjNodes[] = [];
 	private inputValidators: ValidatorInput[];
+	private btnSubmitNode: HTMLButtonElement;
+	private parentNode: Element;
 
 	constructor(parentNode: Element) {
-		this.inputObjNodesArr = this.getInputAllObjNodesArr(parentNode);
+		this.parentNode = parentNode;
+		this.initVars();
+	}
+
+	private initVars() {
+		this.inputObjNodesArr = this.getInputAllObjNodesArr(this.parentNode);
+		this.btnSubmitNode = querySelector('button[type=submit]', this.parentNode) as HTMLButtonElement;
 	}
 
 	public init() {
 		this.initValidators();
+		this.initEventListeners();
+		this.checkFormValidAndDisableBtnSubmit();
+	}
+
+	private disableBtnSubmit(bool: boolean): void {
+		this.btnSubmitNode.disabled = bool;
+	}
+
+	private initEventListeners(): void {
+		// поставить слушатель события на кнопку submit
+		// поставить слушатель события на изменение в каком либо валидаторе
+		// в валидаторе для input'ов необходимо реализовать событие, на которое можно подписаться здесь, событие срабатывает при взаимодействии с input'ом
+
+		for (const inputValidator of this.inputValidators) {
+			inputValidator.inputEventEmitter.subscribe(() => {
+				this.checkFormValidAndDisableBtnSubmit();
+			});
+		}
+	}
+
+	private get validForm() {
+		for (const inputValidator of this.inputValidators) {
+			if (inputValidator.valid === false) {
+				return false;
+			}
+		}
+
+		return true;
+		// const validValidatorsArr = this.inputValidators.
+	}
+
+	private checkFormValidAndDisableBtnSubmit() {
+		const disabledSubmit = !this.validForm;
+		this.disableBtnSubmit(disabledSubmit);
 	}
 
 	private getInputAllObjNodesArr(parentNode: Element): InputObjNodes[] {
@@ -49,7 +92,9 @@ export class ValidatorForm {
 		this.inputValidators = this.inputObjNodesArr.map(inputObjNodes => (new ValidatorInput(inputObjNodes)));
 	}
 
-	public getInputValidators() {
-		return this.inputValidators;
-	}
+
+
+	// public getInputValidators() {
+	// 	return this.inputValidators;
+	// }
 }

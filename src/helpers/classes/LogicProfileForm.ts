@@ -1,19 +1,18 @@
-import { getTargetElement } from "../helpers/helpers";
+import { getTargetElement } from "../helpers";
 import { ProfileItemChildNodes } from "../interfaces/interfaces";
 
 export class LogicProfileForm {
 	private profileItemNodes: Element[] = [];
 	private profileItemObjects: ProfileItemChildNodes[] = [];
 	private parentNode: Element;
-	private readonly selectorFormProfileItem = '[data-type=form-profile-item]';
-	private readonly selectorFormProfileItemInfo = '[data-type=form-profile-item-info]';
-	private readonly selectorFormProfileItemInfoText = '[data-type=form-profile-item-info-text]';
-	private readonly selectorFormProfileInputWrapper = '[data-type=form-profile-input-wrapper]';
-	private readonly selectorFormProfileInput = '.input';
-	private readonly selectorFormProfileSaveBtn = '[data-type=form-profile-save-btn]';
-	private readonly selectorFormProfileEditBtn = '[data-type=form-profile-edit-btn]';
-	private readonly activeClassFormProfileItem = 'form-profile__item_active';
-
+	private readonly selectorFormProfileItem: string = '[data-type=form-profile-item]';
+	private readonly selectorFormProfileItemInfo: string = '[data-type=form-profile-item-info]';
+	private readonly selectorFormProfileItemInfoText: string = '[data-type=form-profile-item-info-text]';
+	private readonly selectorFormProfileInputWrapper: string = '[data-type=form-profile-input-wrapper]';
+	private readonly selectorFormProfileInput: string = '.input';
+	private readonly selectorFormProfileSaveBtn: string = '[data-type=form-profile-save-btn]';
+	private readonly selectorFormProfileEditBtn: string = '[data-type=form-profile-edit-btn]';
+	private readonly activeClassFormProfileItem: string = 'form-profile__item_active';
 
 	constructor(parentNode: Element) {
 		this.parentNode = parentNode;

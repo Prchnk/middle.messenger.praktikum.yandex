@@ -2,7 +2,7 @@ import RegistrationTemplate from './registration.hbs';
 import {render} from '../../block/render';
 import {InputRegistration} from "../../components/input/input";
 import {querySelector} from "../../helpers/helpers";
-import {ValidatorForm} from "../../classes/ValidatorForm";
+import {ValidatorForm} from "../../helpers/classes/ValidatorForm";
 import {getFormValue} from "../../helpers/form";
 
 
@@ -28,7 +28,7 @@ function renderHbs() {
 	outputNode.innerHTML = RegistrationTemplate(FORM_DATA);
 
 	const registrationFormNode = querySelector('.form_registration', outputNode);
-	let controlsNode = querySelector('.controls', registrationFormNode)
+	let controlsNode = querySelector('.controls', registrationFormNode);
 	FORM_DATA.list.forEach(props =>
 		render(controlsNode, (new InputRegistration(props)))
 	)

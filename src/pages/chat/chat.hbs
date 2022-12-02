@@ -1,14 +1,17 @@
 <div class="container">
 <div class="chat-list">
 	<div class="search">
-		<label>
+		<form>
+			<label>
 			<input type="text" placeholder="поиск">
 		</label>
+		</form>
+
 	</div>
 
 {{#each list}}
 		<ul>
-			<li>
+			<li class="special-fix">
 				<img src="" alt="avatar"/>
 				<div class="about">
 					<div class="name">{{this.name}}</div>
@@ -55,9 +58,11 @@
 				</ul>
 			</div>
 
-			<div class="footer">
-				<input name="message" type="text" class="input-message">
-				<button class="send-button">отправить</button>
+			<div>
+				<form class="footer">
+					<input name="message" type="text" class="input-message">
+					<button class="send-button">отправить</button>
+				</form>
 			</div>
 
 		</div>

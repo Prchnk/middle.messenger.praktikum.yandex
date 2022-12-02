@@ -10,7 +10,7 @@ const METHODS = {
  * На входе: объект. Пример: {a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}
  * На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
  */
-function queryStringify(data) {
+function queryStringify(data: any) {
 	console.log('queryStringify', data)
 	let pairs = Object.keys(data).map((key) => {
 		let value = data[key];
@@ -24,17 +24,19 @@ function queryStringify(data) {
 }
 
 class HTTPTransport {
-	get(url, options = {}) {
-
+	get(url: string, options: any = {}) {
 		return this.request(url, {...options, method: METHODS.GET}, options.timeout);
 	}
-	put(url, options = {}) {
+
+	put(url: string, options: any = {}) {
 		return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
 	}
-	delete(url, options = {}) {
+
+	delete(url: string, options: any = {}) {
 		return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
 	}
-	post(url, options = {}) {
+
+	post(url: string, options: any = {}) {
 		return this.request(url, {...options, method: METHODS.POST}, options.timeout);
 	}
 
@@ -44,7 +46,7 @@ class HTTPTransport {
 	// options:
 	// headers — obj
 	// data — obj
-	request(url, options, timeout = 5000) {
+	request(url: string, options: any, timeout = 5000) {
 		return new Promise((resolve, reject)=> {
 			let xhr = new XMLHttpRequest();
 			let sendUrl = '';
