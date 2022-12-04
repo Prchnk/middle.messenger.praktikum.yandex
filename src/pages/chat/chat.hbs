@@ -12,7 +12,7 @@
 {{#each list}}
 		<ul>
 			<li class="special-fix">
-				<img src="../../img/avatar.png" alt="avatar"/>
+				<img src={{avatarSrc}} alt="avatar"/>
 				<div class="about">
 					<div class="name">{{this.name}}</div>
 					<div class="status">
@@ -26,7 +26,7 @@
 	</div>
 		<div class="chat">
 			<div class="header">
-				<img src="" alt="avatar">
+				<img src={{avatarSrc}} alt="avatar">
 				<div class="chat-about">
 					<div class="chat-with">Чат с {{this.name}}</div>
 					<div class="amount-messages"> {{amount_message}} сообщений</div>

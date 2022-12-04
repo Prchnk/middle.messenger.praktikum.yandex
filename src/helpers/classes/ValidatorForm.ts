@@ -1,100 +1,106 @@
-import { querySelector } from "../helpers";
+import {querySelector} from "../helpers";
 import {InputObjNodes} from "../interfaces/interfaces";
 import {ValidatorInput} from "./ValidatorInput";
 
 export class ValidatorForm {
-	private readonly selectorInputWrapper: string = '.input-control';
-	private readonly selectorLabelText: string = '.input-label-text';
-	private readonly selectorInput: string = '.input';
-	private readonly selectorInputError: string = '.input-error';
+  private readonly selectorInputWrapper: string = '.input-control';
+  private readonly selectorLabelText: string = '.input-label-text';
+  private readonly selectorInput: string = '.input';
+  private readonly selectorInputError: string = '.input-error';
 
-	private inputObjNodesArr: InputObjNodes[] = [];
-	private inputValidators: ValidatorInput[];
-	private btnSubmitNode: HTMLButtonElement;
-	private parentNode: Element;
+  private inputObjNodesArr: InputObjNodes[] = [];
+  private inputValidators: ValidatorInput[];
+  private btnSubmitNode: HTMLButtonElement;
+  private formNode: HTMLFormElement;
 
-	constructor(parentNode: Element) {
-		this.parentNode = parentNode;
-		this.initVars();
-	}
+  constructor(formNode: HTMLFormElement) {
+    this.formNode = formNode;
+    this.initVars();
+  }
 
-	private initVars() {
-		this.inputObjNodesArr = this.getInputAllObjNodesArr(this.parentNode);
-		this.btnSubmitNode = querySelector('button[type=submit]', this.parentNode) as HTMLButtonElement;
-	}
+  private initVars() {
+    this.inputObjNodesArr = this.getInputAllObjNodesArr(this.formNode);
+    this.btnSubmitNode = querySelector('button[type=submit]', this.formNode) as HTMLButtonElement;
+  }
 
-	public init() {
-		this.initValidators();
-		this.initEventListeners();
-		this.checkFormValidAndDisableBtnSubmit();
-	}
+  public init() {
+    this.initValidators();
+    this.initEventListeners();
+    this.checkFormValidAndDisableBtnSubmit();
+  }
 
-	private disableBtnSubmit(bool: boolean): void {
-		this.btnSubmitNode.disabled = bool;
-	}
+  private disableBtnSubmit(bool: boolean): void {
+    this.btnSubmitNode.disabled = bool;
+  }
 
-	private initEventListeners(): void {
-		// поставить слушатель события на кнопку submit
-		// поставить слушатель события на изменение в каком либо валидаторе
-		// в валидаторе для input'ов необходимо реализовать событие, на которое можно подписаться здесь, событие срабатывает при взаимодействии с input'ом
+  private initEventListeners(): void {
 
-		for (const inputValidator of this.inputValidators) {
-			inputValidator.inputEventEmitter.subscribe(() => {
-				this.checkFormValidAndDisableBtnSubmit();
-			});
-		}
-	}
+    for (const inputValidator of this.inputValidators) {
+      inputValidator.inputEventEmitter.subscribe(() => {
+        this.checkFormValidAndDisableBtnSubmit();
+      });
+    }
 
-	private get validForm() {
-		for (const inputValidator of this.inputValidators) {
-			if (inputValidator.valid === false) {
-				return false;
-			}
-		}
+    this.formNode.addEventListener('submit', this.submitForm);
+  }
 
-		return true;
-		// const validValidatorsArr = this.inputValidators.
-	}
+  private submitForm = (event: SubmitEvent) => {
+    event.preventDefault();
 
-	private checkFormValidAndDisableBtnSubmit() {
-		const disabledSubmit = !this.validForm;
-		this.disableBtnSubmit(disabledSubmit);
-	}
+    if (this.validForm === true) {
+      // что-то делать после отправки формы
+    }
+  };
 
-	private getInputAllObjNodesArr(parentNode: Element): InputObjNodes[] {
-		const inputWrapperNodes = Array.from(parentNode.querySelectorAll(this.selectorInputWrapper));
+  private get validForm(): boolean {
+    for (const inputValidator of this.inputValidators) {
+      if (!inputValidator.valid) {
+        return false;
+      }
+    }
 
-		return inputWrapperNodes.map(this.getInputObjNodes);
-	}
+    return true;
+    // const validValidatorsArr = this.inputValidators.
+  }
 
-	private getInputObjNodes = (inputWrapperNode: Element): InputObjNodes => {
-		const inputLabelTextNode: HTMLLabelElement | null = inputWrapperNode.querySelector(this.selectorLabelText);
-		const inputNode: HTMLInputElement | null = inputWrapperNode.querySelector(this.selectorInput);
-		const inputErrorNode: HTMLSpanElement | null = inputWrapperNode.querySelector(this.selectorInputError);
+  private checkFormValidAndDisableBtnSubmit() {
+    const disabledSubmit = !this.validForm;
+    this.disableBtnSubmit(disabledSubmit);
+  }
 
-		if (
-			inputLabelTextNode === null ||
-			inputNode === null ||
-			inputErrorNode === null
-		) {
-			throw new Error(`Не найден элемент по селектору: ${this.selectorLabelText} или ${this.selectorInput} или ${this.selectorInputError}`);
-		}
+  private getInputAllObjNodesArr(formNode: HTMLFormElement): InputObjNodes[] {
+    const inputWrapperNodes = Array.from(formNode.querySelectorAll(this.selectorInputWrapper));
 
-		return {
-			inputLabelTextNode,
-			inputNode,
-			inputErrorNode,
-			inputWrapperNode
-		};
-	}
+    return inputWrapperNodes.map(this.getInputObjNodes);
+  }
 
-	private initValidators(): void {
-		this.inputValidators = this.inputObjNodesArr.map(inputObjNodes => (new ValidatorInput(inputObjNodes)));
-	}
+  private getInputObjNodes = (inputWrapperNode: Element): InputObjNodes => {
+    const inputLabelTextNode: HTMLLabelElement | null = inputWrapperNode.querySelector(this.selectorLabelText);
+    const inputNode: HTMLInputElement | null = inputWrapperNode.querySelector(this.selectorInput);
+    const inputErrorNode: HTMLSpanElement | null = inputWrapperNode.querySelector(this.selectorInputError);
+
+    if (
+      inputLabelTextNode === null ||
+      inputNode === null ||
+      inputErrorNode === null
+    ) {
+      throw new Error(`Не найден элемент по селектору: ${this.selectorLabelText} или ${this.selectorInput} или ${this.selectorInputError}`);
+    }
+
+    return {
+      inputLabelTextNode,
+      inputNode,
+      inputErrorNode,
+      inputWrapperNode
+    };
+  }
+
+  private initValidators(): void {
+    this.inputValidators = this.inputObjNodesArr.map(inputObjNodes => (new ValidatorInput(inputObjNodes)));
+  }
 
 
-
-	// public getInputValidators() {
-	// 	return this.inputValidators;
-	// }
+  // public getInputValidators() {
+  // 	return this.inputValidators;
+  // }
 }

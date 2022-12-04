@@ -15,7 +15,7 @@ const FORM_DATA = {
 		{name: 'phone', label: 'Ваш телефон', type: 'text'},
 		{name: 'email', label: 'Ваша почта', type: 'text'},
 		{name: 'password', label: 'Придумайте пароль', type: 'password'},
-		// {name: 'display_name', label: 'Придумайте ник', type: 'text'},
+		{name: 'display_name', label: 'Придумайте ник', type: 'text'},
 
 	]
 };

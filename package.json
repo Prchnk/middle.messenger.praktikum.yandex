@@ -9,7 +9,9 @@
     "start": "npm run build && node ./src/server/app.js",
     "dev": "npm run build-cache && nodemon ./src/server/app.js",
     "profile": "parcel build src/pages/profile/profile.html",
-    "lint": "eslint"
+    "lint:all": "npm run lint && npm run lint:scss",
+    "lint": "eslint src",
+    "lint:scss": "stylelint '**/*.scss'"
   },
   "author": "",
   "license": "ISC",
