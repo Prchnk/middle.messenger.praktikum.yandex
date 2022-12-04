@@ -12,7 +12,7 @@ export class LogicProfileForm {
 	private readonly selectorFormProfileInput: string = '.input';
 	private readonly selectorFormProfileSaveBtn: string = '[data-type=form-profile-save-btn]';
 	private readonly selectorFormProfileEditBtn: string = '[data-type=form-profile-edit-btn]';
-	private readonly activeClassFormProfileItem: string = 'form-profile__item_active';
+	private readonly activeClassFormProfileItem: string = 'item-active';
 
 	constructor(parentNode: Element) {
 		this.parentNode = parentNode;

@@ -30,7 +30,7 @@ function renderHbs() {
 
 	render(injectedBtnSubmitNode, (new Button({
 		type: 'submit',
-		cssClasses: ['btn', 'btn_submit'],
+		cssClasses: ['btn', 'btn-submit'],
 		htmlContent: 'Авторизоваться'
 	})));
 

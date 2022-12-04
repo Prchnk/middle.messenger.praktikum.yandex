@@ -94,7 +94,7 @@ export class ValidatorInput {
 	};
 
 	private clearErrorInBrowser(): void {
-		this.inputObjNodes.inputErrorNode.classList.remove('input-error_active');
+		this.inputObjNodes.inputErrorNode.classList.remove('input-error-active');
 		this.inputObjNodes.inputErrorNode.textContent = '';
 	}
 
@@ -150,7 +150,7 @@ export class ValidatorInput {
 
 	private setError(errorText: string): void {
 		this._existError = true;
-		this.inputObjNodes.inputErrorNode.classList.add('input-error_active');
+		this.inputObjNodes.inputErrorNode.classList.add('input-error-active');
 		this._arrErrors.push(errorText);
 
 		const errorHtmlText = this._arrErrors.map(text => `<span>${text}</span>`).join('');
@@ -175,10 +175,10 @@ export class ValidatorInput {
 	}
 
 	private validatorNamePhone = (): void => {
-		const phonePattern = this.value.match(/\+[0-9]{15,20}/);
+		const phonePattern = this.value.match(/\+[0-9]{10,15}/);
 
 		if (!phonePattern) {
-			this.setError('должен состоять из цифр, может начинается с плюса, Допустимо от 15 до 20 символов');
+			this.setError('должен состоять из цифр, может начинается с плюса, Допустимо от 10 до 15 символов');
 		}
 
 	}

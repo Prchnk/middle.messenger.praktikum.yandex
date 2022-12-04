@@ -21,8 +21,6 @@ const FORM_DATA = {
 };
 function renderHbs() {
 
-	// document.querySelector('#output')!.innerHTML = RegistrationTemplate(data);
-
 
 	const outputNode = querySelector('#output');
 	outputNode.innerHTML = RegistrationTemplate(FORM_DATA);
@@ -48,40 +46,3 @@ function addListeners(): void {
 renderHbs();
 
 addListeners()
-	// data.list.forEach(props =>
-	// 	render(RegistrationFormNode, (new InputRegistration(props)))
-	// )
-
-	// const registrationValidatorForm = new ValidatorForm(RegistrationFormNode);
-	// registrationValidatorForm.init();
-
-
-
-	// const outputNode: Element | null = DOCUMENT.querySelector('#output');
-	//
-	// if (outputNode === null) {
-	// 	throw new Error('#output не найден в дереве');
-	// }
-	//
-	// outputNode.innerHTML = RegistrationTemplate(data);
-	//
-	// const registrationFormNode = outputNode.querySelector('.form_registration');
-	//
-	// if (registrationFormNode === null) {
-	// 	throw new Error('.form_auth не найден в дереве');
-	// }
-	//
-
-
-
-
-
-
-	// data.list.forEach((props) => {
-	// 	render('form', new InputRegistration(props))
-	// })
-
-
-
-
-

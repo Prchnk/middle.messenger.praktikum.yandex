@@ -1,129 +1,125 @@
 :root {
-	--main-bg-color: rgb(26, 57, 79);
-	--btn-bg-color-disabled: rgba(26, 57, 79, 0.3);
-	--btn-color-disabled: rgba(255, 255, 255, 0.5);
+  --main-bg-color: rgb(26 57 79);
+  --btn-bg-color-disabled: rgb(26 57 79 / 30%);
+  --btn-color-disabled: rgb(255 255 255 / 50%);
 }
 
 *,
-:before,
-:after {
-	box-sizing: inherit
+::before,
+::after {
+  box-sizing: inherit;
 }
 
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	margin: 0;
-	background-image: url("../img/background.jpg")
+  margin: 0;
+  background-image: url("../img/background.jpg");
 }
 
 img {
-	display: block;
-	max-width: 100%;
-	max-height: 100%;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .container,
 html,
 body {
-	width: 100%;
-	height: 100%
+  width: 100%;
+  height: 100%;
 }
 
 .container {
-	justify-content: center;
-	align-items: center;
-	display: flex
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .auth {
-	max-width: 400px;
-	width: 100%;
-	border: var(--main-bg-color);
-	border-radius: 12px;
-	padding: 30px;
-	background-color: white;
+  max-width: 400px;
+  width: 100%;
+  border: var(--main-bg-color);
+  border-radius: 12px;
+  padding: 30px;
+  background-color: white;
 }
 
 .registration {
-	height: auto;
-	width: 25%;
-	border: var(--main-bg-color);
-	border-radius: 12px;
-	padding: 30px;
+  height: auto;
+  width: 25%;
+  border: var(--main-bg-color);
+  border-radius: 12px;
+  padding: 30px;
 }
 
 h2 {
-	text-align: center;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	color: var(--main-bg-color);
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: var(--main-bg-color);
 }
 
 .input-control {
-	margin-bottom: 40px
+  margin-bottom: 40px;
 }
 
 .input-control input {
-	width: 100%;
-	border: 0;
-	border-bottom: 1px solid var(--main-bg-color);
-	font-size: 20px;
-	line-height: 26px
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--main-bg-color);
+  font-size: 20px;
+  line-height: 26px;
 }
 
 .input-label {
-	color: var(--main-bg-color);
-	font-size: 1em;
+  color: var(--main-bg-color);
+  font-size: 1em;
 }
 
-.btn_submit {
-	width: 100%;
-	color: #fff;
-	background-color: var(--main-bg-color);
-	border: 0;
-	border-radius: 12px;
-	font-size: 24px;
-	line-height: 36px
+.btn-submit {
+  width: 100%;
+  color: #fff;
+  background-color: var(--main-bg-color);
+  border: 0;
+  border-radius: 12px;
+  font-size: 24px;
+  line-height: 36px;
 }
 
 button[disabled] {
-	background-color: var(--btn-bg-color-disabled);
-	color: var(--btn-color-disabled);
+  background-color: var(--btn-bg-color-disabled);
+  color: var(--btn-color-disabled);
 }
 
 .link {
-	margin: 0 auto
+  margin: 0 auto;
 }
 
 .shadow-input input:hover {
-	box-shadow: 0 0 6px 3px rgba(58, 219, 253, 0.35);
+  box-shadow: 0 0 6px 3px rgb(58 219 253 / 35%);
 }
 
 .plug {
-	font-size: 25px;
-	justify-content: center;
+  font-size: 25px;
+  justify-content: center;
 }
 
 .main {
-	font-size: 35px;
+  font-size: 35px;
 }
 
 .hide {
-	display: none;
+  display: none;
 }
-
 
 .input-error {
-	display: grid;
-	//display: flex;
-	//flex-direction: column;
-	gap: 10px;
+  display: grid;
+  gap: 10px;
 }
 
-.input-error_active {
-	color: red;
-	//border: 1px solid red;
+.input-error-active {
+  color: red;
 }
