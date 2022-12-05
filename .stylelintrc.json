@@ -4,7 +4,7 @@
     "color-hex-case": "lower"
   },
   "ignoreFiles": [
-    "dist/*",
+    "dist/**/*.css",
     "node_modules"
   ]
 }
