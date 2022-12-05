@@ -6,9 +6,15 @@ npm run start
 В конечном итоге это будет SPA приложение-мессенджер, выполняющий стандартные функции мессенджера.
 
 
+
 ссылка на ПР спринт2
 
 https://github.com/Prchnk/middle.messenger.praktikum.yandex/pull/1
+
+### ссылка на ПР спринт2
+https://github.com/Prchnk/middle.messenger.praktikum.yandex/pull/1
+
+
 
 На текущем эпате инпут вынесен как основной компонент, добавлена валидация. В файле  src/helpers/form.ts собираются данные из формы
 
