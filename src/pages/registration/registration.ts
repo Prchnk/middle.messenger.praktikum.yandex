@@ -3,7 +3,6 @@ import {render} from '../../block/render';
 import {InputRegistration} from "../../components/input/input";
 import {querySelector} from "../../helpers/helpers";
 import {ValidatorForm} from "../../helpers/classes/ValidatorForm";
-import {getFormValue} from "../../helpers/form";
 
 
 const FORM_DATA = {
@@ -15,7 +14,7 @@ const FORM_DATA = {
 		{name: 'phone', label: 'Ваш телефон', type: 'text'},
 		{name: 'email', label: 'Ваша почта', type: 'text'},
 		{name: 'password', label: 'Придумайте пароль', type: 'password'},
-		// {name: 'display_name', label: 'Придумайте ник', type: 'text'},
+		{name: 'display_name', label: 'Придумайте ник', type: 'text'},
 
 	]
 };
@@ -25,8 +24,9 @@ function renderHbs() {
 	const outputNode = querySelector('#output');
 	outputNode.innerHTML = RegistrationTemplate(FORM_DATA);
 
-	const registrationFormNode = querySelector('.form_registration', outputNode);
-	let controlsNode = querySelector('.controls', registrationFormNode);
+	const registrationFormNode: HTMLFormElement = querySelector('.form_registration', outputNode) as HTMLFormElement;
+
+	const controlsNode = querySelector('.controls', registrationFormNode);
 	FORM_DATA.list.forEach(props =>
 		render(controlsNode, (new InputRegistration(props)))
 	)
@@ -34,15 +34,5 @@ function renderHbs() {
 	const registrationValidatorForm = new ValidatorForm(registrationFormNode);
 	registrationValidatorForm.init();
 }
-function addListeners(): void {
-	let formNode = querySelector('.form_registration') as HTMLFormElement;
-	formNode.addEventListener('submit', (event) => {
-		event.preventDefault();
 
-		let result = getFormValue(formNode, FORM_DATA.list);
-		console.log(result);
-	})
-}
 renderHbs();
-
-addListeners()

@@ -19,7 +19,7 @@ function renderHbs() {
   outputNode.innerHTML = AuthTemplate(FORM_DATA);
 
   const injectedInputsNode = querySelector('.injectedInputs', outputNode);
-  const authFormNode = querySelector('.form_auth', outputNode);
+  const authFormNode: HTMLFormElement = querySelector('.form_auth', outputNode) as HTMLFormElement;
   const injectedBtnSubmitNode = querySelector('.injectedBtnSubmit', outputNode);
 
   FORM_DATA.list.forEach(props =>
@@ -36,15 +36,4 @@ function renderHbs() {
   authValidatorForm.init();
 }
 
-// function addListeners(): void {
-//   let formNode = querySelector('.form_registration') as HTMLFormElement;
-//   formNode.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//
-//     let result = getFormValue(formNode, FORM_DATA.list);
-//     console.log(result);
-//   })
-// }
-
 renderHbs();
-// addListeners()

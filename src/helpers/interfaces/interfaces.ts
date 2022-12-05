@@ -28,3 +28,9 @@ export interface ProfileItemChildNodes {
 	formItemSaveBtnNode: HTMLButtonElement;
 	formItemEditBtnNode: HTMLButtonElement;
 }
+
+export interface FormControl {
+  type: string;
+  value: string;
+  name: string;
+}

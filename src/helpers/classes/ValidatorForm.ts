@@ -1,5 +1,5 @@
 import {querySelector} from "../helpers";
-import {InputObjNodes} from "../interfaces/interfaces";
+import {FormControl, InputObjNodes} from "../interfaces/interfaces";
 import {ValidatorInput} from "./ValidatorInput";
 
 export class ValidatorForm {
@@ -49,6 +49,8 @@ export class ValidatorForm {
 
     if (this.validForm === true) {
       // что-то делать после отправки формы
+      console.log(this.formValues);
+
     }
   };
 
@@ -99,8 +101,11 @@ export class ValidatorForm {
     this.inputValidators = this.inputObjNodesArr.map(inputObjNodes => (new ValidatorInput(inputObjNodes)));
   }
 
-
-  // public getInputValidators() {
-  // 	return this.inputValidators;
-  // }
+  private get formValues(): FormControl[] {
+    return this.inputValidators.map(inputValidator => ({
+      name: inputValidator.name,
+      value: inputValidator.value,
+      type: inputValidator.type
+    }));
+  }
 }

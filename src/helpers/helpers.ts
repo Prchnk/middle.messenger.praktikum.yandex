@@ -4,7 +4,7 @@ export function getTargetElement(event: Event): HTMLElement {
 	return event.target as HTMLElement;
 }
 
-export function querySelector(selectors: string, parentNode: Element | null = null) {
+export function querySelector(selectors: string, parentNode: Element | null = null): Element {
 	let nodeOrNull = null;
 
 	if (parentNode === null) {

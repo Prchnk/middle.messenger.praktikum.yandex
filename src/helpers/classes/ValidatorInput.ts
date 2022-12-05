@@ -10,7 +10,7 @@ export class ValidatorInput {
 	private _valid: boolean = false;
 	private _arrErrors: string[] = [];
 
-	private get value(): string {
+	public get value(): string {
 		return this.inputObjNodes.inputNode.value;
 	};
 
@@ -24,6 +24,14 @@ export class ValidatorInput {
 	public get valid(): boolean {
 		return this._valid;
 	}
+
+  public get name(): string {
+    return this.inputObjNodes.inputNode.name;
+  }
+
+  public get type(): string {
+    return this.inputObjNodes.inputNode.type;
+  }
 
 	public inputEventEmitter = new InputEventEmitter<{node: HTMLInputElement, value: string}>();
 
@@ -136,7 +144,8 @@ export class ValidatorInput {
 
 		const findedObjConformity = objConformityArr.find(objConformity => objConformity.name === this.typeInput);
 
-		if (findedObjConformity === undefined) {
+		if (findedObjConformity === undefined) { // если валидаторов для этого name нет
+      this._valid = true;
 			return;
 			// throw new Error(`В массиве объектов соответствий findedObjConformity не найден объект с полем name, равным ${this.typeInput}`);
 		}

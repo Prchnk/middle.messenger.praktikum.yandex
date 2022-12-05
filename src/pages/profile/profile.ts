@@ -20,7 +20,7 @@ function renderHbs() {
 	};
 	const outputNode =  querySelector('#output');
 	outputNode.innerHTML = ProfileTemplate(data);
-	const profileFormNode = querySelector('.form-profile', outputNode);
+	const profileFormNode: HTMLFormElement = querySelector('.form-profile', outputNode) as HTMLFormElement;
 	const injectInputComponentNodes = outputNode.querySelectorAll('.injectInputComponent');
 
 	data.list.forEach((props, i) => {
