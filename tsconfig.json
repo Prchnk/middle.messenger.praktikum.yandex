@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"lib": [
+			"ES2017",
+			"DOM"
+		],
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"sourceMap": true,
+		"strictNullChecks": true,
+		"types": [
+			"/src/global.d.ts"
+		]
+	}
+}

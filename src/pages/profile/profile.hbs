@@ -1,0 +1,25 @@
+<h2>{{title}}</h2>
+
+<form class="form form-profile">
+
+	{{#each list}}
+		<div class="item" data-type="form-profile-item" data-input-name="{{ this.name }}"
+				 data-value="{{ this.name }}">
+
+			<div class="item-info" data-type="form-profile-item-info">
+				<div class="item-info-text" data-type="form-profile-item-info-text">{{ this.name }}</div>
+				<button type="button" class="btn edit-btn" data-type="form-profile-edit-btn">Edit</button>
+			</div>
+
+			<div class="input-wrapper shadow-input" data-type="form-profile-input-wrapper">
+				<div class="injectInputComponent"></div>
+				<button type="button" class="save-btn btn" data-type="form-profile-save-btn">Save</button>
+			</div>
+
+		</div>
+
+	{{/each}}
+
+	<button type="submit" class="btn btn-submit">Сохранить</button>
+
+</form>
