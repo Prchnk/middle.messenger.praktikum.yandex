@@ -1,7 +1,7 @@
 {
   "name": "viber2.0",
   "version": "1.0.0",
-  "source": "src/pages/index.html",
+  "source": "src/pages/index/index.html",
   "scripts": {
     "start-parcel": "parcel --no-cache",
     "build": "parcel build --no-cache",

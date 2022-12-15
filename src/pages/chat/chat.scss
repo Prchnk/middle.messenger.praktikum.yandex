@@ -1,29 +1,29 @@
-:root {
-  --main-bg-color: #1a394f;
-}
+//:root {
+//  --main-bg-color: #1a394f;
+//}
+//
+//*,
+//*::before,
+//*::after {
+//  box-sizing: border-box;
+//}
+//
+//body,
+//html,
+//#output,
+//.container {
+//  width: 100%;
+//  height: 100%;
+//  margin: 0;
+//}
+//
+//body {
+//  background-image: url("../../img/background.jpg");
+//  padding: 40px 0;
+//  color: white;
+//}
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body,
-html,
-#output,
-.container {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  background-image: url("../../img/background.jpg");
-  padding: 40px 0;
-  color: white;
-}
-
-.container {
+.chat_container {
   margin: 0 auto;
   width: 750px;
   background: #444753;
@@ -63,13 +63,16 @@ body {
   .search {
     padding: 20px;
   }
+  .search-form {
+    margin-left: 10px;
+  }
 
   input {
     border-radius: 3px;
     border: none;
     padding: 14px;
     color: white;
-    background: #6a6c75;
+    background: var(--main-bg-color);
     width: 90%;
     font-size: 14px;
   }
@@ -161,6 +164,7 @@ img {
 
 .your-message {
   background: #1f0320;
+  margin-right: 10px;
 
   &::after {
     border-bottom-color: #1f0320;
@@ -174,6 +178,7 @@ img {
 
 .align-right {
   text-align: right;
+  margin-right: 10px;
 }
 
 .float-right {
