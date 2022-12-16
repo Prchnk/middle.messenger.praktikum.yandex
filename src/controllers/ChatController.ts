@@ -23,9 +23,6 @@ export class ChatController {
       console.error(e);
     }
   }
-
-
-
 }
 
 export default new ChatController();

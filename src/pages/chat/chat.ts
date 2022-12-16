@@ -2,9 +2,11 @@ import Block from '../../block';
 import template from './chat.hbs';
 import { withStore } from '../../utils/store';
 import ChatController from "../../controllers/ChatController";
-import {Button} from "../../components/button/button";
-import {Input} from "../../components/input/input";
+import { Button } from "../../components/button/button";
+import { Input } from "../../components/input/input";
 import './chat.scss';
+import { ChatList } from './chat-list/chat-list';
+import { ChatCurrent } from './chat-current/chat-current';
 
 class ChatPageBase extends Block {
   init() {
@@ -23,9 +25,12 @@ class ChatPageBase extends Block {
       placeholder: 'Введите название'
     });
 
+    this.children.chatList = new ChatList({});
+    this.children.chatCurrent = new ChatCurrent({});
   }
-   async onSubmit() {
-    const data = {title: (this.children.chatTitle as Input).getValue()};
+
+  async onSubmit() {
+    const data = { title: (this.children.chatTitle as Input).getValue() };
     await ChatController.createChat(data);
     await ChatController.getChats();
   }
@@ -38,7 +43,7 @@ class ChatPageBase extends Block {
 
 const withState = withStore((state) => {
   console.log(state);
-  return ({chats: state.chats })
+  return ({ chats: state.chats })
 })
 
 

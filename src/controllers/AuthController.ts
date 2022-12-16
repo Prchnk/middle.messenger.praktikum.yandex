@@ -1,4 +1,4 @@
-import API, { AuthAPI, SigninData, SignupData } from '../API/Auth.Api';
+import API, { AuthAPI, SigninData, SignupData } from '../API/AuthApi';
 import store from '../utils/store';
 import router from '../utils/router';
 import {Routes} from "../utils/routes";

@@ -53,3 +53,6 @@ export class AuthAPI extends BaseAPI {
 }
 
 export default new AuthAPI();
+
+export class AuthApi {
+}
