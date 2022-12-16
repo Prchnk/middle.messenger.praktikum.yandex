@@ -3,6 +3,7 @@ import template from './chat-current.hbs';
 import { withStore } from '../../../utils/store';
 import { Chat } from '../../../API/ChatApi';
 import { ChatManager } from '../chat-manager/chat-manager';
+import './chat-current.scss'
 
 class ChatCurrentBase extends Block {
   init() {

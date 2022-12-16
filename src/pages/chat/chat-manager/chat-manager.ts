@@ -10,11 +10,11 @@ export class ChatManager extends Block {
     this.children.addInput = new Input({
       type: 'text',
       name: 'userId',
-      placeholder: 'User id',
+      placeholder: 'введите id юзера',
     });
 
     this.children.addButton = new Button({
-      label: 'Add',
+      label: 'добавить юзера',
       type: 'button',
       events: {
         click: () => {
@@ -32,11 +32,11 @@ export class ChatManager extends Block {
     this.children.removeInput = new Input({
       type: 'text',
       name: 'userId',
-      placeholder: 'User id',
+      placeholder: 'введите id юзера',
     });
 
     this.children.removeButton = new Button({
-      label: 'Remove',
+      label: 'удалить юзера',
       type: 'button',
       events: {
         click: () => {

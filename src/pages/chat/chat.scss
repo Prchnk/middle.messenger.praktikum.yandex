@@ -57,7 +57,7 @@
 }
 
 .chat-list {
-  width: 260px;
+  //width: 260px;
   float: left;
 
   .search {
@@ -82,6 +82,7 @@
 
     li {
       padding-bottom: 20px;
+      list-style-type: none;
     }
   }
 
