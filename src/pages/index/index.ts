@@ -1,12 +1,14 @@
 import { LoginPage } from '../auth/auth';
 import { RegisterPage } from '../registration/registration';
 import Router from '../../utils/router';
-import { ProfilePage } from '../profile/profile';
 import AuthController from '../../controllers/AuthController';
 import {Nav} from './nav';
 import {render} from "../../block/render";
 import {Routes} from "../../utils/routes";
 import {ChatPage} from "../chat/chat";
+import {ProfileChangePasswordPage} from "../profile/profile-change-password/PCP";
+import {ProfileViewPage} from "../profile/profile-view/profile-view";
+import {ProfileEditPage} from "../profile/profile-edit/profile-edit";
 
 
 
@@ -16,9 +18,11 @@ window.addEventListener('DOMContentLoaded', async () => {
   Router
     .use(Routes.Index, LoginPage)
     .use(Routes.Register, RegisterPage)
-    .use(Routes.Profile, ProfilePage)
+    .use(Routes.Profile, ProfileViewPage)
     .use(Routes.Auth, LoginPage)
     .use(Routes.Chat, ChatPage)
+    .use(Routes.ChangePassword, ProfileChangePasswordPage)
+    .use(Routes.ProfileEdit, ProfileEditPage)
 
 
   let isProtectedRoute = true;

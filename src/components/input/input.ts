@@ -54,17 +54,19 @@ export class Input extends Block<InputProps> {
     return (this.element as HTMLInputElement).value;
   }
 
+  public setValue(value: string) {
+    return (this.element as HTMLInputElement).value = value;
+  }
+
+  componentDidMount() {
+    console.log('input cdm', this.element);
+    super.componentDidMount();
+  }
+
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template, {...this.props});
   }
 }
-
-
-
-
-
-
-
 
 
 // import Block from "../../block";

@@ -3,5 +3,7 @@ export enum Routes {
   Auth = '/auth/',
   Register = '/registration/',
   Profile = '/profile/',
-  Chat = '/chat/'
+  ProfileEdit = '/profile-edit/',
+  ChangePassword = '/change-password/',
+  Chat = '/chat/',
 }

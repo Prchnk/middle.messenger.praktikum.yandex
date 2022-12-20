@@ -1,5 +1,5 @@
-import { EventBus } from "../utils/eventBus";
-import { nanoid } from 'nanoid';
+import {EventBus} from "../utils/eventBus";
+import {nanoid} from 'nanoid';
 
 // Нельзя создавать экземпляр данного класса
 class Block<P extends Record<string, any> = any> {
@@ -20,7 +20,7 @@ class Block<P extends Record<string, any> = any> {
   constructor(propsWithChildren: P) {
     const eventBus = new EventBus();
 
-    const { props, children } = this._getChildrenAndProps(propsWithChildren);
+    const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
     this.children = children;
     this.props = this._makePropsProxy(props);
@@ -32,7 +32,7 @@ class Block<P extends Record<string, any> = any> {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block>} {
+  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block> } {
     const props: Record<string, unknown> = {};
     const children: Record<string, Block> = {};
 
@@ -44,7 +44,7 @@ class Block<P extends Record<string, any> = any> {
       }
     });
 
-    return { props: props as P, children };
+    return {props: props as P, children};
   }
 
   _addEvents() {
@@ -68,18 +68,26 @@ class Block<P extends Record<string, any> = any> {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  protected init() {}
+  protected init() {
+  }
 
   _componentDidMount() {
     this.componentDidMount();
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach(child => {
+      if (Array.isArray(child)) {
+        child.forEach(ch => ch.dispatchComponentDidMount());
+      } else {
+        child.dispatchComponentDidMount();
+      }
+    });
   }
 
   private _componentDidUpdate(oldProps: P, newProps: P) {
@@ -119,7 +127,7 @@ class Block<P extends Record<string, any> = any> {
   }
 
   protected compile(template: (context: any) => string, context: any) {
-    const contextAndStubs = { ...context };
+    const contextAndStubs = {...context};
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
@@ -176,7 +184,7 @@ class Block<P extends Record<string, any> = any> {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set(target, prop: string, value) {
-        const oldTarget = { ...target }
+        const oldTarget = {...target}
 
         target[prop as keyof P] = value;
 
@@ -193,3 +201,5 @@ class Block<P extends Record<string, any> = any> {
 }
 
 export default Block;
+
+

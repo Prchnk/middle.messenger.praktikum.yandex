@@ -7,3 +7,5 @@ export class ChatListItem extends Block {
     return this.compile(template, this.props);
   }
 }
+
+

@@ -1,10 +1,11 @@
 import Block from '../block/index';
+import {render} from "../block/render";
 
 function isEqual(lhs: string, rhs: string): boolean {
   return lhs === rhs;
 }
 
-function render(query: string, block: Block) {
+function renderBlock(query: string, block: Block) {
   const root = document.querySelector(query);
 
   if (root === null) {
@@ -13,7 +14,10 @@ function render(query: string, block: Block) {
 
   root.innerHTML = '';
 
-  root.append(block.getContent()!);
+  render(root, block)
+
+  // root.append(block.getContent()!);
+
 
   return root;
 }
@@ -40,7 +44,7 @@ class Route {
     if (!this.block) {
       this.block = new this.blockClass({});
 
-      render(this.query, this.block);
+      renderBlock(this.query, this.block);
       return;
     }
   }

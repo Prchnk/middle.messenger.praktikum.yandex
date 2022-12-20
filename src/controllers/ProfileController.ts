@@ -8,11 +8,7 @@ export class ProfileController {
   }
 
   async changeProfile(data: UpdateProfileData) {
-    try {
       await this.api.updateProfile(data);
-    } catch (e: any) {
-      console.error(e);
-    }
   }
 
   async changeAvatar(data: UpdateProfileAvatarData) {

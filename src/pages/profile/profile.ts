@@ -68,6 +68,8 @@ import { withStore } from '../../utils/store';
 import AuthController from '../../controllers/AuthController';
 import { Button } from '../../components/button/button';
 import './profile.scss';
+import {ProfileViewPage} from "./profile-view/profile-view";
+import {ProfileEditPage} from "./profile-edit/profile-edit";
 
 class ProfilePageBase extends Block {
   init() {
@@ -81,6 +83,10 @@ class ProfilePageBase extends Block {
         }
       }
     })
+
+
+    this.children.profileView = new ProfileViewPage({})
+    this.children.profileEdit = new ProfileEditPage({})
   }
 
   render() {
@@ -88,7 +94,7 @@ class ProfilePageBase extends Block {
   }
 }
 
-const withUser = withStore((state) => ({ ...state.user }))
+const withUser = withStore((state) => ({ isEdit: state.isEdit }))
 
 export const ProfilePage = withUser(ProfilePageBase);
 

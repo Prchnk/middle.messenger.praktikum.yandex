@@ -14,6 +14,7 @@ export class ChatController {
       store.set('chats', res)
     } catch (e: any) {
       console.error(e);
+
     }
   }
   async createChat(data: CreateChatData) {
