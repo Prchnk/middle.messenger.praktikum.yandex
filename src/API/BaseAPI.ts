@@ -1,10 +1,10 @@
-import HTTPTransport from '../utils/http/index';
+import HTTPtransport from '../utils/HTTPtransport';
 
 export default abstract class BaseAPI {
-  protected http: HTTPTransport;
+  protected http: HTTPtransport;
 
   protected constructor(endpoint: string) {
-    this.http = new HTTPTransport(endpoint);
+    this.http = new HTTPtransport(endpoint);
   }
 
   public abstract create?(data: unknown): Promise<unknown>;

@@ -1,4 +1,4 @@
-import API, { UserAPI, UpdateProfileData, UpdateProfileAvatarData, UpdatePasswordData } from '../API/UserApi';
+import API, {UpdatePasswordData, UpdateProfileAvatarData, UpdateProfileData, UserAPI} from '../API/UserApi';
 
 export class ProfileController {
   private readonly api: UserAPI;
@@ -8,15 +8,14 @@ export class ProfileController {
   }
 
   async changeProfile(data: UpdateProfileData) {
-      await this.api.updateProfile(data);
+    await this.api.updateProfile(data);
   }
 
   async changeAvatar(data: UpdateProfileAvatarData) {
-    try {
-      await this.api.updateProfileAvatar(data);
-    } catch (e: any) {
-      console.error(e);
-    }
+    let formData = new FormData();
+    formData.append('avatar', data.avatar.slice(), data.avatar.name)
+    return await this.api.updateProfileAvatar(formData);
+
   }
 
   async changePassword(data: UpdatePasswordData) {

@@ -10,7 +10,7 @@ export interface UpdateProfileData {
 }
 
 export interface UpdateProfileAvatarData {
-  file: File;
+ avatar: File;
 }
 
 export interface UpdatePasswordData {
@@ -31,7 +31,7 @@ export class UserAPI extends BaseAPI {
     return this.http.put('/profile', data);
   }
 
-  updateProfileAvatar(data: UpdateProfileAvatarData) {
+  updateProfileAvatar(data: FormData) {
     return this.http.put('/profile/avatar', data);
   }
 

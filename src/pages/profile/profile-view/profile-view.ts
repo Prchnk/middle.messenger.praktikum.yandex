@@ -6,13 +6,30 @@ import { Button } from '../../../components/button/button';
 import './profile-view.scss';
 import router from "../../../utils/router";
 import {Routes} from "../../../utils/routes";
-import avatar from '../../../img/avatar.png';
 import './profile-view.scss'
+import {Input} from "../../../components/input/input";
+import ProfileController from "../../../controllers/ProfileController";
 
 class ProfileViewBase extends Block {
   init() {
     console.log('profileViewInit');
     AuthController.fetchUser();
+
+    this.children.avatarInput = new Input({
+      name: 'avatar-file',
+      type: 'file',
+      events: {
+        change: async (event) => {
+          console.log(event);
+          const target = event.target as HTMLInputElement
+          const file = target.files?.[0];
+          if (file) {
+            await ProfileController.changeAvatar({avatar: file})
+            await AuthController.fetchUser();
+          }
+        }
+      }
+    })
 
     this.children.button = new Button({
       label: 'Выйти',
@@ -46,6 +63,6 @@ class ProfileViewBase extends Block {
   }
 }
 
-const withUser = withStore((state) => ({ ...state.user, avatar }))
+const withUser = withStore((state) => ({ ...state.user, avatarSrc: 'https://ya-praktikum.tech/api/v2/resources/' + encodeURI(state.user?.avatar) }))
 
 export const ProfileViewPage = withUser(ProfileViewBase);

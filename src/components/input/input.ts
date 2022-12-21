@@ -38,7 +38,10 @@ import './input.scss';
 interface InputProps {
   name: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
+  events?: {
+    change?: (event: InputEvent) => void;
+  };
 }
 
 export class Input extends Block<InputProps> {

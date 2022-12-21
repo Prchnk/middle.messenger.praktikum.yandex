@@ -11,12 +11,12 @@ type Options = {
   data?: any;
 };
 
-export default class HTTPTransport {
+export default class HTTPtransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2';
   protected endpoint: string;
 
   constructor(endpoint: string) {
-    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+    this.endpoint = `${HTTPtransport.API_URL}${endpoint}`;
   }
 
   public get<Response>(path = '/'): Promise<Response> {
@@ -73,7 +73,13 @@ export default class HTTPTransport {
       xhr.onerror = () => reject({reason: 'network error'});
       xhr.ontimeout = () => reject({reason: 'timeout'});
 
-      xhr.setRequestHeader('Content-Type', 'application/json');
+      if (!(data instanceof FormData)) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      } else {
+        // xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+      }
+
+
 
       xhr.withCredentials = true;
       xhr.responseType = 'json';
@@ -81,7 +87,11 @@ export default class HTTPTransport {
       if (method === Method.Get || !data) {
         xhr.send();
       } else {
-        xhr.send(JSON.stringify(data));
+        if(data instanceof FormData) {
+          xhr.send(data);
+        } else {
+          xhr.send(JSON.stringify(data));
+        }
       }
     });
   }
