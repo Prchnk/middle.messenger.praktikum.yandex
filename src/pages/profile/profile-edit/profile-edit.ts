@@ -1,8 +1,7 @@
 import Block from '../../../block';
 import template from './profile-edit.hbs';
-import store, { withStore } from '../../../utils/store';
+import { withStore } from '../../../utils/store';
 import { Button } from '../../../components/button/button';
-import './profile-edit.scss';
 import {Input} from "../../../components/input/input";
 import ProfileController from "../../../controllers/ProfileController";
 import {UpdateProfileData} from "../../../API/UserApi";
@@ -62,7 +61,6 @@ class ProfileEditBase extends Block {
           }, {} as UpdateProfileData);
           try {
             await ProfileController.changeProfile(data)
-            // store.set('isEdit', false);
             router.go(Routes.Profile)
             await AuthController.fetchUser();
           } catch (err) {
