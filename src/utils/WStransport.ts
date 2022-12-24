@@ -7,10 +7,7 @@ export enum WSTransportEvents {
   Close = 'close',
 }
 
-export default class WSTransport extends EventBus {
-  on(Close: WSTransportEvents, arg1: () => void) {
-      throw new Error('Method not implemented.');
-  }
+export default class WSTransport extends EventBus<any> {
   private socket: WebSocket | null = null;
   private pingInterval: number = 0;
 
@@ -78,8 +75,4 @@ export default class WSTransport extends EventBus {
       this.emit(WSTransportEvents.Message, data)
     });
   }
-
-  emit(Connected: WSTransportEvents) {
-        throw new Error('Method not implemented.');
-    }
 }

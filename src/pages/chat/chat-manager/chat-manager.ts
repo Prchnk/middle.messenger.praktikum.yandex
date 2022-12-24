@@ -3,7 +3,7 @@ import template from './chat-manager.hbs';
 import { Input } from '../../../components/input/input';
 import { Button } from '../../../components/button/button';
 import './chat-manager.scss';
-import ChatsUsersController from '../../../controllers/ChatsUsersController';
+import ChatController from '../../../controllers/ChatController';
 
 export class ChatManager extends Block {
   init() {
@@ -18,10 +18,10 @@ export class ChatManager extends Block {
       type: 'button',
       events: {
         click: () => {
-          const userId = parseInt(this.children.addInput.getValue());
+          const userId = parseInt((this.children.addInput as Input).getValue());
           console.log(`add user ${userId} to chat ${this.props.selectedChatId}`);
 
-          ChatsUsersController.addUserChat({
+          ChatController.addUserToChat({
             chatId: this.props.selectedChatId,
             users: [userId]
           });
@@ -43,7 +43,7 @@ export class ChatManager extends Block {
           const userId = parseInt(this.children.removeInput.getValue());
           console.log(`remove user ${userId} from chat ${this.props.selectedChatId}`);
 
-          ChatsUsersController.removeUserChat({
+          ChatController.removeUserChat({
             chatId: this.props.selectedChatId,
             users: [userId]
           });

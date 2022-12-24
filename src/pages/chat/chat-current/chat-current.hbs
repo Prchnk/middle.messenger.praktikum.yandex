@@ -11,34 +11,15 @@
 
   <div class="body">
     <div class="add-user">{{{addUser}}}</div>
-    <ul>
-      <li class="special-fix">
-        <div class="message-data align-right">
-          <span class="message-data-time">дата</span>
-          <span class="message-data-name">Отправитель</span>
-
-        </div>
-        <div class="message your-message float-right">
-          это главный хбс чата
-        </div>
-      </li>
-
-      <li class="no_decoration">
-        <div class="message-data">
-          <span class="message-data-name">Твой друг</span>
-          <span class="message-data-time">дата</span>
-        </div>
-        <div class="message my-message">
-          ок
-        </div>
-      </li>
-    </ul>
+    {{#each messages}}
+      {{{this}}}
+    {{/each}}
   </div>
 
   <div>
     <form class="footer">
-      <input name="message" type="text" class="input-message">
-      <button class="send-button">отправить</button>
+      {{{messageInput}}}
+      {{{sendButton}}}
     </form>
   </div>
 

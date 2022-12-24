@@ -10,7 +10,7 @@ import { ChatCurrent } from './chat-current/chat-current';
 
 class ChatPageBase extends Block {
   init() {
-    ChatController.getChats();
+    ChatController.fetchChats();
 
     this.children.createButton = new Button({
       label: 'создать чат',
@@ -31,8 +31,7 @@ class ChatPageBase extends Block {
 
   async onSubmit() {
     const data = { title: (this.children.chatTitle as Input).getValue() };
-    await ChatController.createChat(data);
-    await ChatController.getChats();
+    await ChatController.create(data);
   }
 
   render() {

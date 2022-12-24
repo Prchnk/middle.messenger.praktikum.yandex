@@ -1,4 +1,4 @@
-export class EventBus<E extends { [Ev: string]: unknown[] }> {
+export class EventBus<E extends { [Ev: string]: unknown[] } = Record<string, string[]> > {
 	private readonly listeners: {
 		[K in keyof E]?: Array<(...args: E[K]) => void>;
 	} = {};

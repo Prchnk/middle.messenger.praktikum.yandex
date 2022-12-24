@@ -8,6 +8,19 @@ export interface DeleteChatData {
   chatId: number;
 }
 
+export interface GetTokenChatData {
+  chatId: number;
+}
+
+export interface UpdateChatsUsersData {
+  chatId: number;
+  users: number[];
+}
+export interface DeleteChatsUsersData {
+  chatId: number;
+  users: number[];
+}
+
 export type ReadChatResponse = Chat[];
 
 export interface Chat {
@@ -32,7 +45,19 @@ export class ChatAPI extends BaseAPI {
   delete(data: DeleteChatData) {
     return this.http.delete('', data);
   }
+  async getToken(data: GetTokenChatData): Promise<string> {
+    const response = await this.http.post<{ token: string }>(`/token/${data.chatId}`);
+
+    return response.token;
+  }
   update = undefined;
+
+  deleteUser(data: DeleteChatsUsersData) {
+    return this.http.delete('/users', data);
+  }
+  addUser(data: UpdateChatsUsersData) {
+    return this.http.put('/users', data);
+  }
 
 }
 

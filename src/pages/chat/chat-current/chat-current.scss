@@ -1,6 +1,7 @@
 .chat {
   margin: 0 auto;
   width: 750px;
+  height: 700px;
   background: #444753;
   border-radius: 5px;
   display: flex;
@@ -18,6 +19,10 @@
   list-style-type: none;
 }
 
-.no_decoration {
+.no-decoration {
   list-style-type: none;
+}
+
+.body {
+  overflow: scroll;
 }

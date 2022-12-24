@@ -1,29 +1,4 @@
-//:root {
-//  --main-bg-color: #1a394f;
-//}
-//
-//*,
-//*::before,
-//*::after {
-//  box-sizing: border-box;
-//}
-//
-//body,
-//html,
-//#output,
-//.container {
-//  width: 100%;
-//  height: 100%;
-//  margin: 0;
-//}
-//
-//body {
-//  background-image: url("../../img/background.jpg");
-//  padding: 40px 0;
-//  color: white;
-//}
-
-.chat_container {
+.chat-container {
   margin: 0 auto;
   width: 750px;
   background: #444753;
@@ -57,12 +32,12 @@
 }
 
 .chat-list {
-  //width: 260px;
   float: left;
 
   .search {
     padding: 20px;
   }
+
   .search-form {
     margin-left: 10px;
   }

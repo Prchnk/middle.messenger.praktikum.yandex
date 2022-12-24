@@ -7,6 +7,7 @@ import { Chat } from '../../../API/ChatApi';
 class ChatListBase extends Block {
   init() {
 
+
   }
 
   componentDidUpdate() {
