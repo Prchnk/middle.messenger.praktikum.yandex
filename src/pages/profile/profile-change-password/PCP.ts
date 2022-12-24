@@ -2,7 +2,6 @@ import Block from '../../../block';
 import template from './PCP.hbs';
 import {withStore} from '../../../utils/store';
 import {Button} from '../../../components/button/button';
-import './PCP.scss';
 import {Input} from "../../../components/input/input";
 import ProfileController from "../../../controllers/ProfileController";
 import {UpdatePasswordData} from "../../../API/UserApi";
