@@ -33,9 +33,13 @@ export class AuthController {
   }
 
   async fetchUser() {
-    const user = await this.api.read();
+    try {
+      const user = await this.api.read();
+      store.set('user', user);
+    } catch (e: any) {
+      console.error(e.message);
+    }
 
-    store.set('user', user);
   }
 
   async logout() {

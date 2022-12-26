@@ -26,7 +26,7 @@ export type ReadChatResponse = Chat[];
 export interface Chat {
   id: number;
   title: string;
-  avatar: null; // TODO
+  avatar: string | null;
   created_by: number;
   unread_count: number;
   last_message: number | null;
