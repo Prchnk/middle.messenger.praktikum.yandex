@@ -9,6 +9,7 @@ import {ChatPage} from "../chat/chat";
 import {ProfileChangePasswordPage} from "../profile/profile-change-password/PCP";
 import {ProfileViewPage} from "../profile/profile-view/profile-view";
 import {ProfileEditPage} from "../profile/profile-edit/profile-edit";
+import {NotFoundPage} from "../404/404";
 
 
 
@@ -23,6 +24,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Chat, ChatPage)
     .use(Routes.ChangePassword, ProfileChangePasswordPage)
     .use(Routes.ProfileEdit, ProfileEditPage)
+    .useNotFound(NotFoundPage)
 
 
   let isProtectedRoute = true;

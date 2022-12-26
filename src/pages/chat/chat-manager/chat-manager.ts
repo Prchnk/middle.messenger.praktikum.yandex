@@ -19,7 +19,6 @@ export class ChatManager extends Block {
       events: {
         click: () => {
           const userId = parseInt((this.children.addInput as Input).getValue());
-          console.log(`add user ${userId} to chat ${this.props.selectedChatId}`);
 
           ChatController.addUserToChat({
             chatId: this.props.selectedChatId,

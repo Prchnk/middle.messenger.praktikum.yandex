@@ -65,32 +65,3 @@ class ProfileChangePasswordBase extends Block {
 const withUser = withStore((state) => ({...state.user}))
 
 export const ProfileChangePasswordPage = withUser(ProfileChangePasswordBase);
-
-
-// function isEqual(a: Record<string, any>, b: Record<string, any>): boolean {
-//   console.log(a, b);
-//   if (typeof a !== "object" || typeof b !== "object" || a === null || b === null) {
-//     return false;
-//   }
-//   let bigObj = Object.keys(a).length > Object.keys(b).length ? a : b;
-//   for (let prop in bigObj) {
-//     if (!bigObj.hasOwnProperty(prop)) {
-//       continue;
-//     }
-//     if (typeof a[prop] === 'object' && a[prop] !== null) {
-//       let result = isEqual(a[prop], b[prop]);
-//       if (result === false) {
-//         return result;
-//       }
-//     }
-//     if ((a || {})[prop] !== (b || {})[prop]) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
-// export default isEqual;
-//
-// const a = {a: 1};
-// const b = {a: 1, b: 4};
-// console.log(isEqual(a, b)); // true

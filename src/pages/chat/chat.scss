@@ -88,10 +88,6 @@
   overflow: auto;
 }
 
-.send-button {
-  width: 70px;
-}
-
 .input-message {
   flex-grow: 1;
 }
@@ -168,4 +164,14 @@ img {
   content: "";
   clear: both;
   height: 0;
+}
+
+
+.create-chat-btn {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.send-button {
+  flex-shrink: 0;
 }

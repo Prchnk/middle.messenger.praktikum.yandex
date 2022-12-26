@@ -1,5 +1,6 @@
 import Block from '../../../block';
 import template from './message.hbs';
+import './message.scss'
 
 interface MessageProps {
   content: string;
@@ -12,6 +13,7 @@ export class Message extends Block<MessageProps> {
   }
 
   protected render(): DocumentFragment {
+    console.log(this.props)
     return this.compile(template, { ...this.props });
   }
 }

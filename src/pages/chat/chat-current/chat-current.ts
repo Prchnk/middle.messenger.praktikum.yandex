@@ -22,10 +22,12 @@ class ChatCurrentBase extends Block {
       type: 'button',
       events: {
         click: () => {
-          messagesController.sendMessage(this.props.selectedChatId, (this.children.messageInput as Input).getValue())
+          messagesController.sendMessage(this.props.selectedChatId, (this.children.messageInput as Input).getValue());
+          (this.children.messageInput as Input).setValue('')
 
         }
-      }
+      },
+      classes: 'send-button'
     });
 
   }
@@ -41,6 +43,7 @@ class ChatCurrentBase extends Block {
   }
 
   private createMessages(messages: any[], userId: number) {
+    console.log(messages);
     return messages.map(data => {
       return new Message({...data, isMine: userId === data.user_id });
     })

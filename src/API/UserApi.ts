@@ -22,10 +22,6 @@ export class UserAPI extends BaseAPI {
   constructor() {
     super('/user');
   }
-  read = undefined;
-  create = undefined;
-  update = undefined;
-  delete = undefined;
 
   updateProfile(data: UpdateProfileData) {
     return this.http.put('/profile', data);

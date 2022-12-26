@@ -16,7 +16,6 @@ class ChatListBase extends Block {
         ...chat,
         events: {
           click: () => {
-            console.log('onclick', chat);
             store.set('selectedChatId', chat.id);
           }
         }

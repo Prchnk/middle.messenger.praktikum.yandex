@@ -71,8 +71,11 @@ export default class WSTransport extends EventBus<any> {
       if (data.type && data.type === 'pong') {
         return;
       }
+      if (data.type === 'message' || Array.isArray(data)) {
+        this.emit(WSTransportEvents.Message, data)
+      }
 
-      this.emit(WSTransportEvents.Message, data)
+
     });
   }
 }

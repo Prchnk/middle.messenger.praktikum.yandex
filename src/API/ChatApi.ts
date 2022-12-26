@@ -50,7 +50,6 @@ export class ChatAPI extends BaseAPI {
 
     return response.token;
   }
-  update = undefined;
 
   deleteUser(data: DeleteChatsUsersData) {
     return this.http.delete('/users', data);

@@ -18,6 +18,7 @@ class ChatPageBase extends Block {
       events: {
         click: () => this.onSubmit()
       },
+      classes: 'create-chat-btn'
     });
     this.children.chatTitle = new Input({
       name: 'title',
@@ -35,30 +36,13 @@ class ChatPageBase extends Block {
   }
 
   render() {
-    console.log('render', this.props.chats);
     return this.compile(template, this.props);
   }
 }
 
 const withState = withStore((state) => {
-  console.log(state);
   return ({ chats: state.chats })
 })
 
 
 export const ChatPage = withState(ChatPageBase);
-
-// import ChatTemplate from './chat.hbs';
-// import {DOCUMENT} from "../../utils/helpers/helpers";
-// import * as avatarSrc from '../../img/avatar.png';
-//
-// function renderHbs() {
-// 	const data = {
-// 		title: 'по идее это бокпанель',
-// 		list: [
-// 			{name: 'Твой друг', status: 'online', amount_message: 2, me: 'Оля', date: Date, avatarSrc},
-// 		]
-// 	};
-// 	DOCUMENT.querySelector('#output')!.innerHTML = ChatTemplate(data);
-// }
-// renderHbs();

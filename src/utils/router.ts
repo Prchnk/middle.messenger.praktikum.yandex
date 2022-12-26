@@ -40,7 +40,6 @@ class Route {
   }
 
   render() {
-    console.log('routeRender', this)
     if (!this.block) {
       this.block = new this.blockClass({});
 
@@ -53,6 +52,7 @@ class Route {
 class Router {
   private static __instance: Router;
   private routes: Route[] = [];
+  private notFoundBlock: typeof Block;
   private currentRoute: Route | null = null;
   private history = window.history;
 
@@ -73,6 +73,11 @@ class Router {
     return this;
   }
 
+  public useNotFound(block: typeof Block) {
+    this.notFoundBlock = block;
+    return this
+  }
+
   public start() {
     window.onpopstate = (event: PopStateEvent) => {
       const target = event.currentTarget as Window;
@@ -88,6 +93,9 @@ class Router {
     console.log('_onRoute', pathname);
 
     if (!route) {
+      if (this.notFoundBlock) {
+        renderBlock(this.rootQuery, new this.notFoundBlock({}));
+      }
       return;
     }
 

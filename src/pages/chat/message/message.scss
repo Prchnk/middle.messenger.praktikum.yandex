@@ -22,8 +22,10 @@
   }
 }
 
-.my-message {
-  background: var(--main-bg-color);
+.isMine {
+  //background: var(--main-bg-color);
+  text-align: right;
+  margin-right: 10px;
 }
 
 .your-message {
@@ -36,11 +38,3 @@
   }
 }
 
-.align-left {
-  text-align: left;
-}
-
-.align-right {
-  text-align: right;
-  margin-right: 10px;
-}

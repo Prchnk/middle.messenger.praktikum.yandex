@@ -17,9 +17,12 @@ class ChatsController {
   }
 
   async create(data: CreateChatData) {
-    await this.api.create(data);
-
-    this.fetchChats();
+    try {
+      await this.api.create(data);
+      this.fetchChats();
+    } catch (e: any) {
+      console.error(e);
+    }
   }
 
   async fetchChats() {
@@ -34,8 +37,8 @@ class ChatsController {
     store.set('chats', chats);
   }
 
-  addUserToChat(data: UpdateChatsUsersData) {
-    return this.api.addUser(data);
+  async addUserToChat(data: UpdateChatsUsersData) {
+    return await this.api.addUser(data);
   }
 
   async removeUserChat(data: DeleteChatsUsersData) {
@@ -62,8 +65,5 @@ class ChatsController {
 }
 
 const controller = new ChatsController();
-
-// @ts-ignore
-window.chatsController = controller;
 
 export default controller;
