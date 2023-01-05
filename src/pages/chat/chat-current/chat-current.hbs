@@ -1,0 +1,30 @@
+<div class="chat">
+  {{#if selectedChatId}}
+
+  <div class="header">
+    <img src={{avatarSrc}} alt="avatar">
+    <div class="chat-about">
+      <div class="chat-with">Чат {{ chat.title }}</div>
+      <div class="amount-messages"></div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="add-user">{{{addUser}}}</div>
+    {{#each messages}}
+      {{{this}}}
+    {{/each}}
+  </div>
+
+  <div>
+    <form class="footer">
+      {{{messageInput}}}
+      {{{sendButton}}}
+    </form>
+  </div>
+
+  {{else}}
+      <div class="chat-plug">Выберите чат</div>
+
+  {{/if}}
+</div>

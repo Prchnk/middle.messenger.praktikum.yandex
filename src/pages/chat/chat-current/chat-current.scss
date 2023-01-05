@@ -1,0 +1,28 @@
+.chat {
+  margin: 0 auto;
+  width: 750px;
+  height: 700px;
+  background: #444753;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.chat-plug {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.special-fix {
+  list-style-type: none;
+}
+
+.no-decoration {
+  list-style-type: none;
+}
+
+.body {
+  overflow: scroll;
+}
