@@ -10,7 +10,7 @@
 		"noUnusedParameters": true,
 		"sourceMap": true,
 		"strictNullChecks": true,
-		"types": [
+		"typeRoots": [
 			"./src/global.d.ts"
 		]
 	},

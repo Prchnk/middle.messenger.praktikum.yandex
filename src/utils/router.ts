@@ -90,7 +90,6 @@ class Router {
 
   private _onRoute(pathname: string) {
     const route = this.getRoute(pathname);
-    console.log('_onRoute', pathname);
 
     if (!route) {
       if (this.notFoundBlock) {
