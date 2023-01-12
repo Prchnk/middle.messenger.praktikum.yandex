@@ -1,7 +1,6 @@
 import Block from '../../block';
 import template from './button.hbs';
 import './button.scss';
-
 interface ButtonProps {
   type?: string;
   label: string;

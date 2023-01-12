@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "lib": [
+      "ES2019",
+      "DOM"
+    ],
+    "types": [
+      "mocha",
+      "chai"
+    ],
+    "typeRoots": [
+      "./src/global.d.ts"
+    ]
+  },
+  "include": [
+    "**/*.test.ts"
+  ],
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true
+  }
+}
