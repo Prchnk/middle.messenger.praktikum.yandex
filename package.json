@@ -10,7 +10,8 @@
     "lint:all": "npm run lint && npm run lint:scss",
     "lint": "eslint src",
     "lint:scss": "stylelint '**/*.scss'",
-    "test": "TS_NODE_PROJECT=./tsconfig.test.json mocha"
+    "test": "TS_NODE_PROJECT=./tsconfig.test.json mocha",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
@@ -28,7 +29,7 @@
     "eslint-config-airbnb": "19.0.4",
     "handlebars-loader": "1.7.3",
     "html-webpack-plugin": "5.5.0",
-    "husky": "8.0.3",
+    "husky": "8.0.0",
     "jsdom": "20.0.3",
     "mini-css-extract-plugin": "2.7.2",
     "mocha": "10.2.0",
@@ -61,13 +62,6 @@
       "engines": {
         "browsers": ">= 50%"
       }
-    }
-  },
-
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test && npm run lint:all",
-      "pre-push": "npm run other command"
     }
   }
 }
