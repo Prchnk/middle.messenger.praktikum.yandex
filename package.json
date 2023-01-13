@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "source": "src/pages/index/index.html",
   "scripts": {
-    "start": "npm run build && node ./src/server/app.js",
     "start-server": "node ./src/server/app.js",
     "dev": "npm run build-cache && nodemon ./src/server/app.js",
     "dev-client": "webpack serve --config webpack.dev.js --open",
-    "prod-client": "webpack --config webpack.prod.js",
+    "start": "webpack --config webpack.prod.js",
     "lint:all": "npm run lint && npm run lint:scss",
     "lint": "eslint src",
     "lint:scss": "stylelint '**/*.scss'",
