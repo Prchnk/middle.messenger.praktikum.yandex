@@ -12,7 +12,7 @@ class Block<P extends Record<string, any> = any> {
 
   public id = nanoid(6);
   protected props: P;
-  public children: Record<string, Block>;
+  public children: Record<string, Block | Block[]>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
@@ -96,7 +96,7 @@ class Block<P extends Record<string, any> = any> {
     }
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  protected componentDidUpdate(_oldProps: P, _newProps: P) {
     return true;
   }
 
@@ -182,8 +182,8 @@ class Block<P extends Record<string, any> = any> {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop: string, value) {
-        const oldTarget = {...target}
+      set(target: any, prop: string, value) {
+        const oldTarget = {...target} as any; // TODO console.log and add type
 
         target[prop as keyof P] = value;
 

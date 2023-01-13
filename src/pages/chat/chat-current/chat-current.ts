@@ -9,7 +9,13 @@ import {Button} from "../../../components/button/button";
 import messagesController from "../../../controllers/MessagesController";
 import {Message} from "../message/message";
 
-class ChatCurrentBase extends Block {
+interface Props {
+  userId: number;
+  messages: Message[];
+  selectedChatId: number;
+  chat: Chat;
+}
+class ChatCurrentBase extends Block<Props> {
   init() {
     this.children.messageInput = new Input({
       type: 'text',
@@ -32,7 +38,7 @@ class ChatCurrentBase extends Block {
 
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate(_: Props, newProps: Props) {
     this.children.addUser = new ChatManager({ selectedChatId: this.props.selectedChatId });
     this.children.messages = this.createMessages(newProps.messages, newProps.userId);
     return true;
@@ -63,4 +69,4 @@ const withState = withStore((state) => {
   });
 });
 
-export const ChatCurrent = withState(ChatCurrentBase);
+export const ChatCurrent = withState(ChatCurrentBase as typeof Block);

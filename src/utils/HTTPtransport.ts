@@ -58,7 +58,7 @@ export default class HTTPtransport {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
 
-      xhr.onreadystatechange = (e) => {
+      xhr.onreadystatechange = () => {
 
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status < 400) {
@@ -88,7 +88,6 @@ export default class HTTPtransport {
         xhr.send();
       } else {
         if(data instanceof FormData) {
-          console.log("send formData")
           xhr.send(data);
         } else {
           xhr.send(JSON.stringify(data));
