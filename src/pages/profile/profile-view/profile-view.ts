@@ -9,6 +9,7 @@ import {Routes} from "../../../utils/routes";
 import './profile-view.scss'
 import {Input} from "../../../components/input/input";
 import ProfileController from "../../../controllers/ProfileController";
+import { getAvatarSrc } from '../../../utils/avatar';
 
 class ProfileViewBase extends Block {
   init() {
@@ -63,6 +64,7 @@ class ProfileViewBase extends Block {
   }
 }
 
-const withUser = withStore((state) => ({ ...state.user, avatarSrc: 'https://ya-praktikum.tech/api/v2/resources/' + encodeURI(state.user?.avatar) }))
+const withUser = withStore((state) => ({ ...state.user, avatarSrc: getAvatarSrc(state.user?.avatar)
+}))
 
 export const ProfileViewPage = withUser(ProfileViewBase);
