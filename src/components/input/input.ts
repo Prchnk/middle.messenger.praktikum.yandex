@@ -2,12 +2,13 @@ import Block from '../../block';
 import template from './input.hbs';
 import './input.scss';
 
-interface InputProps {
+export interface InputProps {
   name: string;
   type: string;
   placeholder?: string;
   events?: {
     change?: (event: InputEvent) => void;
+    input?: (event: InputEvent) => void;
   };
 }
 
@@ -26,6 +27,10 @@ export class Input extends Block<InputProps> {
 
   public setValue(value: string) {
     return (this.element as HTMLInputElement).value = value;
+  }
+
+  public setFocus(): void {
+    this.element?.focus();
   }
 
   componentDidMount() {

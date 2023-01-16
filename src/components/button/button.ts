@@ -8,6 +8,7 @@ interface ButtonProps {
     click: () => void;
   };
   classes?: string;
+  isDisabled?: boolean;
 }
 
 export class Button extends Block<ButtonProps> {

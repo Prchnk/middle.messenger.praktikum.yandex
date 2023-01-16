@@ -6,6 +6,7 @@ import { Link } from '../../components/link/link';
 import { SignupData } from '../../API/AuthApi';
 import AuthController from '../../controllers/AuthController';
 import './registration.scss';
+import { InputMessage } from '../../components/input-message/input-message';
 
 export class RegisterPage extends Block {
   constructor() {
@@ -47,7 +48,18 @@ export class RegisterPage extends Block {
     this.children.password = new Input({
       name: 'password',
       type: 'password',
-      placeholder: 'Пароль'
+      placeholder: 'Пароль',
+      events: {
+        input: (event) => {
+          const { value } = event.target as HTMLInputElement;
+          const hasError = value.length < 3;
+          (this.children.passwordError as InputMessage).setProps({ isVisible: hasError });
+        }
+      }
+    });
+
+    this.children.passwordError = new InputMessage({
+      message: 'Length must be > 3',
     });
 
     this.children.button = new Button({
@@ -72,6 +84,7 @@ export class RegisterPage extends Block {
     const data = Object.fromEntries(values);
 
     AuthController.signup(data as SignupData);
+
   }
 
   render() {

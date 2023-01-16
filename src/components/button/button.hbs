@@ -1,6 +1,7 @@
 <button
 	type="{{ this.type }}"
 	class="btn-submit {{this.classes}}"
+	{{#if isDisabled}} disabled="true" {{/if}}
 >
 	{{ this.label }}
 </button>
