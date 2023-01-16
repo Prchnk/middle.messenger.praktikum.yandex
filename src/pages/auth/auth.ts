@@ -34,7 +34,7 @@ export class LoginPage extends Block {
 
     this.children.link = new Link({
       label: 'Регистрация',
-      to: '/registration/'
+      to: '/sing-up'
     });
   }
 
