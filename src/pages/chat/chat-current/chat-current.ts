@@ -9,6 +9,7 @@ import {Button} from "../../../components/button/button";
 import messagesController from "../../../controllers/MessagesController";
 import {Message} from "../message/message";
 import { querySelector } from '../../../utils/helpers';
+import { Form } from '../../../components/form/form';
 
 interface Props {
   userId: number;
@@ -18,19 +19,41 @@ interface Props {
 }
 class ChatCurrentBase extends Block<Props> {
   init() {
-    this.children.messageInput = new Input({
+    const messageInput = new Input({
       type: 'text',
       name: 'userId',
       placeholder: 'введите сообщение',
     });
-
-    this.children.sendButton = new Button({
+  
+    const sendButton = new Button({
       label: 'отправить',
       type: 'submit',
+      events: {
+        click: () => {
+  
+        }
+      },
       classes: 'send-button'
     });
-
+  
+    this.children.sendForm = new Form({
+      classes: 'footer',
+      events: {
+        submit: (event) => {
+          event.preventDefault();
+          messagesController.sendMessage(this.props.selectedChatId, messageInput.getValue());
+          messageInput.setValue('');
+        },
+      },
+      children: {
+        controls: [
+          messageInput,
+          sendButton,
+        ],
+      }
+    });
   }
+
   componentDidMount(): void {
     console.log('chat-current CDU');
     querySelector('form', this.element).addEventListener('submit', (event) =>{

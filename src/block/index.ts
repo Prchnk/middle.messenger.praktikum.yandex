@@ -32,18 +32,22 @@ class Block<P extends Record<string, any> = any> {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block> } {
+  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block | Block[]> } {
     const props: Record<string, unknown> = {};
-    const children: Record<string, Block> = {};
-
+    const children: Record<string, Block | Block[]> = {};
+  
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (value instanceof Block) {
+      if (key === 'children') {
+        Object.keys(value).forEach((childKey) => {
+          children[childKey] = value[childKey];
+        });
+      } else if (value instanceof Block) {
         children[key as string] = value;
       } else {
         props[key] = value;
       }
     });
-
+  
     return {props: props as P, children};
   }
 
