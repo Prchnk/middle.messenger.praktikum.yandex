@@ -8,44 +8,141 @@ import {UpdateProfileData} from "../../../API/UserApi";
 import AuthController from "../../../controllers/AuthController";
 import router from "../../../utils/router";
 import {Routes} from "../../../utils/routes";
+import { onInput } from '../../../utils/validations/input';
+import { InputMessage } from '../../../components/input-message/input-message';
+import * as PATTERNS from '../../../utils/validations/patterns';
+
+enum InputFieldName {
+  FIRST_NAME = 'first_name',
+  SECOND_NAME = 'second_name',
+  DISPLAY_NAME = 'display_name',
+  EMAIL = 'email',
+  PHONE = 'phone',
+  LOGIN = 'login',
+}
 
 class ProfileEditBase extends Block {
+  validationErrors = {} as Record<InputFieldName, boolean>;
+
   init() {
+    this.children.firstNameError = new InputMessage({
+      message: PATTERNS.FIRST_NAME_ERROR,
+    });
 
     this.children.firstName = new Input({
-      name: 'first_name',
+      name: InputFieldName.FIRST_NAME,
       type: 'text',
-      placeholder: 'Имя'
+      placeholder: 'Имя',
+      value: this.props.first_name,
+      events: {
+        input: onInput({
+          getButton: () => this.children.saveButton as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.firstNameError as InputMessage,
+          inputName: InputFieldName.FIRST_NAME,
+          pattern: PATTERNS.FIRST_NAME,
+        }),
+      }
+    });
+
+    this.children.secondNameError = new InputMessage({
+      message: PATTERNS.FIRST_NAME_ERROR,
     });
 
     this.children.secondName = new Input({
-      name: 'second_name',
+      name: InputFieldName.SECOND_NAME,
       type: 'text',
-      placeholder: 'Фамилия'
+      placeholder: 'Фамилия',
+      value: this.props.second_name,
+      events: {
+        input: onInput({
+          getButton: () => this.children.saveButton as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.secondNameError as InputMessage,
+          inputName: InputFieldName.SECOND_NAME,
+          pattern: PATTERNS.SECOND_NAME,
+        }),
+      }
+    });
+
+    this.children.displayNameError = new InputMessage({
+      message: PATTERNS.DISPLAY_NAME_ERROR,
     });
 
     this.children.displayName = new Input({
-      name: 'display_name',
+      name: InputFieldName.DISPLAY_NAME,
       type: 'text',
-      placeholder: 'Никнэйм'
+      placeholder: 'Nickname',
+      value: this.props.display_name,
+      events: {
+        input: onInput({
+          getButton: () => this.children.saveButton as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.displayNameError as InputMessage,
+          inputName: InputFieldName.DISPLAY_NAME,
+          pattern: PATTERNS.DISPLAY_NAME,
+        }),
+      }
+    });
+
+    this.children.emailError = new InputMessage({
+      message: PATTERNS.EMAIL_ERROR,
     });
 
     this.children.email = new Input({
-      name: 'email',
+      name: InputFieldName.EMAIL,
       type: 'email',
-      placeholder: 'E-mail'
+      placeholder: 'E-mail',
+      value: this.props.email,
+      events: {
+        input: onInput({
+          getButton: () => this.children.saveButton as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.emailError as InputMessage,
+          inputName: InputFieldName.EMAIL,
+          pattern: PATTERNS.EMAIL,
+        }),
+      }
+    });
+
+    this.children.phoneError = new InputMessage({
+      message: PATTERNS.PHONE_ERROR,
     });
 
     this.children.phone = new Input({
-      name: 'phone',
+      name: InputFieldName.PHONE,
       type: 'tel',
-      placeholder: 'Телефон'
+      placeholder: 'Телефон',
+      value: this.props.phone,
+      events: {
+        input: onInput({
+          getButton: () => this.children.saveButton as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.phoneError as InputMessage,
+          inputName: InputFieldName.PHONE,
+          pattern: PATTERNS.PHONE,
+        }),
+      }
+    });
+
+    this.children.loginError = new InputMessage({
+      message: PATTERNS.LOGIN_ERROR,
     });
 
     this.children.login = new Input({
       name: 'login',
       type: 'text',
-      placeholder: 'Логин'
+      placeholder: 'Логин',
+      value: this.props.login,
+      events: {
+        input: onInput({
+          getButton: () => this.children.saveButton as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.loginError as InputMessage,
+          inputName: InputFieldName.LOGIN,
+          pattern: PATTERNS.LOGIN,
+        }),
+      }
     });
 
     this.children.saveButton = new Button({

@@ -7,63 +7,143 @@ import { SignupData } from '../../API/AuthApi';
 import AuthController from '../../controllers/AuthController';
 import './registration.scss';
 import { InputMessage } from '../../components/input-message/input-message';
+import { getValidationErrorsInitial, onInput } from '../../utils/validations/input';
+import * as PATTERNS from '../../utils/validations/patterns';
+  
 
+enum InputFieldName {
+  FIRST_NAME = 'first_name',
+  SECOND_NAME = 'second_name',
+  EMAIL = 'email',
+  PHONE = 'phone',
+  LOGIN = 'login',
+  PASSWORD = 'password',
+}
 export class RegisterPage extends Block {
+  validationErrors = getValidationErrorsInitial(InputFieldName);
+
   constructor() {
-    console.log('RegisterPage');
     super({});
   }
 
   init() {
+    this.children.firstNameError = new InputMessage({
+      message: PATTERNS.FIRST_NAME_ERROR,
+    });
+
     this.children.firstName = new Input({
-      name: 'first_name',
+      name: InputFieldName.FIRST_NAME,
       type: 'text',
-      placeholder: 'Имя'
-    });
-
-    this.children.secondName = new Input({
-      name: 'second_name',
-      type: 'text',
-      placeholder: 'Фамилия'
-    });
-
-    this.children.email = new Input({
-      name: 'email',
-      type: 'email',
-      placeholder: 'E-mail'
-    });
-
-    this.children.phone = new Input({
-      name: 'phone',
-      type: 'tel',
-      placeholder: 'Телефон'
-    });
-
-    this.children.login = new Input({
-      name: 'login',
-      type: 'text',
-      placeholder: 'Логин'
-    });
-
-    this.children.password = new Input({
-      name: 'password',
-      type: 'password',
-      placeholder: 'Пароль',
+      placeholder: 'Имя',
       events: {
-        input: (event) => {
-          const { value } = event.target as HTMLInputElement;
-          const hasError = value.length < 3;
-          (this.children.passwordError as InputMessage).setProps({ isVisible: hasError });
-        }
+        input: onInput({
+          getButton: () => this.children.button as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.firstNameError as InputMessage,
+          inputName: InputFieldName.FIRST_NAME,
+          pattern: PATTERNS.FIRST_NAME,
+        }),
       }
     });
 
+    this.children.secondNameError = new InputMessage({
+      message: PATTERNS.SECOND_NAME_ERROR,
+    });
+
+    this.children.secondName = new Input({
+      name: InputFieldName.SECOND_NAME,
+      type: 'text',
+      placeholder: 'Фамилия',
+      events: {
+        input: onInput({
+          getButton: () => this.children.button as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.secondNameError as InputMessage,
+          inputName: InputFieldName.SECOND_NAME,
+          pattern: PATTERNS.SECOND_NAME,
+        }),
+      }
+    });
+
+    this.children.emailError = new InputMessage({
+      message: PATTERNS.EMAIL_ERROR,
+    });
+
+    this.children.email = new Input({
+      name: InputFieldName.EMAIL,
+      type: 'email',
+      placeholder: 'E-mail',
+      events: {
+        input: onInput({
+          getButton: () => this.children.button as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.emailError as InputMessage,
+          inputName: InputFieldName.EMAIL,
+          pattern: PATTERNS.EMAIL
+        }),
+      }
+    });
+
+    this.children.phoneError = new InputMessage({
+      message: PATTERNS.PHONE_ERROR,
+    });
+
+    this.children.phone = new Input({
+      name: InputFieldName.PHONE,
+      type: 'tel',
+      placeholder: 'Телефон',
+      events: {
+        input: onInput({
+          getButton: () => this.children.button as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.phoneError as InputMessage,
+          inputName: InputFieldName.PHONE,
+          pattern: PATTERNS.PHONE,
+        }),
+      }
+    });
+
+    this.children.loginError = new InputMessage({
+      message: PATTERNS.LOGIN_ERROR,
+    });
+
+    this.children.login = new Input({
+      name: InputFieldName.LOGIN,
+      type: 'text',
+      placeholder: 'Логин',
+      events: {
+        input: onInput({
+          getButton: () => this.children.button as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.loginError as InputMessage,
+          inputName: InputFieldName.LOGIN,
+          pattern: PATTERNS.LOGIN,
+        }),
+      },
+    });
+
     this.children.passwordError = new InputMessage({
-      message: 'Length must be > 3',
+      message: PATTERNS.PASSWORD_ERROR,
+    });
+  
+    this.children.password = new Input({
+      name: InputFieldName.PASSWORD,
+      type: 'password',
+      placeholder: 'Пароль',
+      events: {
+        input: onInput({
+          getButton: () => this.children.button as Button,
+          getErrors: () => this.validationErrors,
+          getInputMessage: () => this.children.passwordError as InputMessage,
+          inputName: InputFieldName.PASSWORD,
+          pattern: PATTERNS.PASSWORD,
+        }),
+      }
     });
 
     this.children.button = new Button({
       label: 'Зарегистрироваться',
+      isDisabled: true,
       events: {
         click: () => this.onSubmit(),
       },

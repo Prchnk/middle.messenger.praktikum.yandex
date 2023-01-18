@@ -64,11 +64,11 @@ h2 {
   color: var(--main-bg-color);
 }
 
-button[disabled] {
-  background-color: var(--btn-bg-color-disabled);
-  color: var(--btn-color-disabled);
-  cursor: default;
-}
+// button[disabled] {
+//   background-color: var(--btn-bg-color-disabled);
+//   color: var(--btn-color-disabled);
+//   cursor: default;
+// }
 
 .plug {
   font-size: 25px;
