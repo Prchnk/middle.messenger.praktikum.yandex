@@ -10,7 +10,8 @@ SPA приложение-мессенджер, выполняющий станд
 
 
 ### ссылка на задеплоеное приложение Netlify
-https://brilliant-concha-30cba1.netlify.app/
+https://earnest-travesseiro-3d5bf1.netlify.app
+
 
 
 
