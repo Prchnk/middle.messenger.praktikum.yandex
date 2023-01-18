@@ -12,7 +12,7 @@ class Block<P extends Record<string, any> = any> {
 
   public id = nanoid(6);
   protected props: P;
-  public children: Record<string, Block>;
+  public children: Record<string, Block | Block[]>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
@@ -32,18 +32,22 @@ class Block<P extends Record<string, any> = any> {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block> } {
+  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block | Block[]> } {
     const props: Record<string, unknown> = {};
-    const children: Record<string, Block> = {};
-
+    const children: Record<string, Block | Block[]> = {};
+  
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (value instanceof Block) {
+      if (key === 'children') {
+        Object.keys(value).forEach((childKey) => {
+          children[childKey] = value[childKey];
+        });
+      } else if (value instanceof Block) {
         children[key as string] = value;
       } else {
         props[key] = value;
       }
     });
-
+  
     return {props: props as P, children};
   }
 
@@ -96,11 +100,11 @@ class Block<P extends Record<string, any> = any> {
     }
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  protected componentDidUpdate(_oldProps: P, _newProps: P) {
     return true;
   }
 
-  setProps = (nextProps: P) => {
+  setProps = (nextProps: Partial<P>) => {
     if (!nextProps) {
       return;
     }
@@ -136,7 +140,6 @@ class Block<P extends Record<string, any> = any> {
         contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
       }
     });
-
     const html = template(contextAndStubs);
 
     const temp = document.createElement('template');
@@ -183,8 +186,8 @@ class Block<P extends Record<string, any> = any> {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop: string, value) {
-        const oldTarget = {...target}
+      set(target: any, prop: string, value) {
+        const oldTarget = {...target} as any; // TODO console.log and add type
 
         target[prop as keyof P] = value;
 

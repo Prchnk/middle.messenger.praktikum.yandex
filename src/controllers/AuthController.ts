@@ -14,9 +14,12 @@ export class AuthController {
     try {
       await this.api.signin(data);
 
-      router.go(Routes.Profile);
+      router.go(Routes.Chat);
     } catch (e: any) {
-      console.error(e);
+      if(e.reason === 'User already in system') {
+        router.go(Routes.Chat)
+      }
+       else {console.error(e)};
     }
   }
 

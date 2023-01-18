@@ -26,11 +26,12 @@
   transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.btn-submit:hover {
-  background: rgb(255 255 255 / 0%);
+.btn-submit:hover:not([disabled]) {
+  background: #bdbdbd;
+  cursor: pointer;
 }
 
-.btn-submit:hover::before {
+.btn-submit:hover::before:not([disabled]) {
   bottom: 0%;
   top: auto;
   height: 100%;

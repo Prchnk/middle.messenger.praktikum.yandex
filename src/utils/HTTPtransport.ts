@@ -58,7 +58,7 @@ export default class HTTPtransport {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
 
-      xhr.onreadystatechange = (e) => {
+      xhr.onreadystatechange = () => {
 
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status < 400) {

@@ -39,7 +39,7 @@ export class ChatManager extends Block {
       type: 'button',
       events: {
         click: () => {
-          const userId = parseInt(this.children.removeInput.getValue());
+          const userId = parseInt((this.children.removeInput as Input).getValue());
           console.log(`remove user ${userId} from chat ${this.props.selectedChatId}`);
 
           ChatController.removeUserChat({

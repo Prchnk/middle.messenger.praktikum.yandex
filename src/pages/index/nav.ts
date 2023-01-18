@@ -15,15 +15,15 @@ export class Nav extends Block {
     });
     this.children.registration = new Link({
       label: 'Регистрация',
-      to: '/registration/'
+      to: '/sign-up'
     });
     this.children.profile = new Link({
       label: 'Профиль',
-      to: '/profile/'
+      to: '/settings'
     });
     this.children.chat = new Link({
       label: 'Чат',
-      to: '/chat/'
+      to: '/messenger'
     });
   }
 

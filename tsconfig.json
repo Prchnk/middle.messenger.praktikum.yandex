@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"module": "es2015",
 		"target": "ES5",
 		"lib": [
 			"ES2019",
@@ -10,8 +11,10 @@
 		"noUnusedParameters": true,
 		"sourceMap": true,
 		"strictNullChecks": true,
-		"types": [
-			"/src/global.d.ts"
-		]
-	}
+		"typeRoots": [
+			"./src/global.d.ts"
+		],
+		"moduleResolution": "node",
+	},
+  "exclude": ["node_modules", "**/*.test.ts"]
 }
